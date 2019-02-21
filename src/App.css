@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -30,4 +30,11 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+body {
+  background-image: url("https://images.unsplash.com/photo-1505816014357-96b5ff457e9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1491&q=80");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
