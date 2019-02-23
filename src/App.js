@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import './App.css';
-// import Navbar from './components/navbar.js'
-import Map from './components/map.js'
-import EventContainer from './container/event_container.js'
+import './App.css'
+import Navbar from './components/navbar.js'
+import UserContainer from './container/user_container.js'
+
+
 
 class App extends Component {
-
   render() {
     return (
-      <div className="App">
-        "Testing"
-        <Map />
-        <EventContainer />
+      <div>
+      <Navbar />
+      <UserContainer />
       </div>
     );
   }

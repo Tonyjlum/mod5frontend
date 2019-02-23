@@ -32,9 +32,46 @@
   }
 } */
 
-body {
+/* body {
   background-image: url("https://images.unsplash.com/photo-1505816014357-96b5ff457e9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1491&q=80");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+} */
+
+/* Map */
+/* .map {
+  height: 400px;
+  width: 400px;
+}
+
+.google-map {
+ resize: both;
+ grid-area: a;
+ width: 600px;
+ height: 500px;
+ border-color: black;
+ border-width: 1px;
+ grid-column-start: 1;
+ grid-row-start: 1;
+ margin: 0 auto;
+} */
+
+.user-container {
+  display: flex;
+}
+
+.map-display{
+  width: 100%;
+  margin: 1%;
+}
+
+.event-container {
+  width: 100%;
+  margin: 1%;
+}
+.event-card {
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 2px;
 }

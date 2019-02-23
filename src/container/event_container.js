@@ -1,34 +1,41 @@
 import React, { Component } from 'react';
 import Event from '../components/event.js'
+import { CardDeck} from 'react-bootstrap'
+import { connect } from 'react-redux'
 
 class EventContainer extends Component {
-  state = {
-    all_events: []
-  }
 
   componentDidMount() {
     fetch("http://localhost:3000/events")
-    .then(reponse => reponse.json())
-    .then(json => this.setState({
-      all_events: json
-    }))
+    .then( reponse => reponse.json())
+    .then( events => this.props.addEventsToStore(events))
   }
 
-  renderLi = () => {
-    return this.state.all_events.map( event => {
-      const total_donation = event.donations.map( e => e.amount_per_volunteer).reduce((a,b) => a+b)
-      return <Event event={event}/>
+  renderEventCards() {
+      return this.props.events.map( event => {
+        const total_donation = event.donations.map( e => e.amount_per_volunteer).reduce((a,b) => a + b, 0)
+        return <Event event={event} donation={total_donation} />
     })
   }
 
   render() {
+
     return (
-      <div>
-        {this.renderLi()}
+      <div className="event-container">
+        <CardDeck>
+        {this.renderEventCards()}
+        </CardDeck>
       </div>
     );
   }
-
+}
+const mapStateToProps = (state) => {
+  return {events: state.events}
 }
 
-export default EventContainer;
+const mapDispatchToProps = {
+  addEventsToStore: (events) => ({type: "ADD_EVENTS", payload: events})
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventContainer);
