@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EventContainer from './event_container.js'
-import Map from '../components/map.js'
+import MapDisplay from '../components/map.js'
 
 
 class UserContainer extends Component {
@@ -8,8 +8,8 @@ class UserContainer extends Component {
   render() {
     return (
       <div className= "user-container">
-        <Map />
-        <EventContainer />
+        <MapDisplay className="map-display"/>
+        <EventContainer className="event-container"/>
       </div>
     );
   }

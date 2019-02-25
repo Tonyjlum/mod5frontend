@@ -3,26 +3,26 @@ import React, { Component } from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import { connect } from 'react-redux'
-import Pin from './pin.js'
-import 'bootstrap/dist/css/bootstrap.min.css'
-
-import { geolocated } from 'react-geolocated';
-
 
 
 class MapDisplay extends Component {
+
+  componentDidMount(){
+    navigator.geolocation.getCurrentPosition( position => {
+      this.props.addLocationToStore(position.coords)})
+  }
 
   renderPin = () => {
     let currentIcon = L.icon({
       iconUrl: 'https://unpkg.com/leaflet@1.4.0/dist/images/marker-icon-2x.png',
       iconSize: [18, 30]
-    });
-    return this.props.events.map( event => {
+    })
+    return this.props.events.map( (event, index) => {
       const position = [event.lat, event.long]
       return (
-        <Marker position={position} icon={currentIcon}>
+        <Marker key={index} position={position} icon={currentIcon}>
           <Popup>
-            {event.title}
+            {event.description}
           </Popup>
         </Marker>
       )
@@ -30,12 +30,14 @@ class MapDisplay extends Component {
   }
 
   render() {
-    console.log("geo location")
-    const position = [40.715280, -73.954260]
     return (
-      <Map style={{height: '90vh', width: '100%' }} center={position} zoom={13}>
+      <Map
+        className= "map-display"
+        style={{height: '91vh', width: '100%' }}
+        center={this.props.location}
+        zoom={14}>
         <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          // attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {this.renderPin()}
@@ -44,12 +46,13 @@ class MapDisplay extends Component {
   }
 
 }
+
 const mapStateToProps = (state) => {
-  return {events: state.events}
+  return state
 }
 const mapDispatchToProps = {
-  addEventsToStore: (events) => ({type: "ADD_EVENTS", payload: events})
+  addLocationToStore: (location) => ({type: "ADD_CURRENT_LOCATION", payload: location})
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(MapDisplay)
+export default connect(mapStateToProps, mapDispatchToProps)(MapDisplay)

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link, NavLink} from "react-router-dom"
-
 import { connect } from 'react-redux'
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 
-class Navbar extends Component {
+class NavigationBar extends Component {
 
   componentDidMount() {
     // fetchFromApi.then(res => {
@@ -11,13 +10,22 @@ class Navbar extends Component {
     // })
   }
 
+  //make the nav bar load conditionally
+
   render() {
     return (
-      <div onClick={this.props.sendToStore}>
-
-
-        {this.props.logged_in }
-      </div>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/">HelpingHand</Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link href="/events">Events</Nav.Link>
+          <Nav.Link href="/attending">Attending</Nav.Link>
+          <Nav.Link href="/hosting">Hosting</Nav.Link>
+        </Nav>
+        <Form inline>
+          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+          <Button variant="outline-info">Search</Button>
+        </Form>
+      </Navbar>
     );
   }
 
@@ -38,4 +46,4 @@ const mapDispatchToProps = {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar)
