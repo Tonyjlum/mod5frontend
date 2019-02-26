@@ -33,7 +33,8 @@ class MapDisplay extends Component {
     return (
       <Map
         className= "map-display"
-        style={{height: '91vh', width: '100%' }}
+        animate={true}
+        style={{height: '93vh', width: '100%' }}
         center={this.props.location}
         zoom={14}>
         <TileLayer

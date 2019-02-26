@@ -24,7 +24,6 @@ class NewEvent extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    // this.setState(STATERESET)
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.address}&key=AIzaSyA-kXyO4hu_HuTp2rb36ub5Adun3uY88n8`)
     .then(response => response.json())
     .then(geolocation => this.setState({
@@ -57,30 +56,29 @@ class NewEvent extends Component {
   }
 
 
-
   render() {
     return (
-      <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-      <Row>
-          <Col xs={5}>
-          <Form.Group controlId="title">
-            <Form.Label>Event:</Form.Label>
-            <Form.Control type="text" placeholder="event title" value={this.state.title} />
-            <Form.Text className="text-muted">
-            </Form.Text>
-          </Form.Group>
-          </Col>
-
-          <Col xs={7}>
-          <Form.Group controlId="discription">
-            <Form.Label>Discription: </Form.Label>
-            <Form.Control type="text" value={this.state.discription} />
-            <Form.Text className="text-muted">
-            </Form.Text>
-          </Form.Group>
-          </Col>
-
-
+      <Form
+        ClassName= "new-event-form"
+        onChange={this.handleChange}
+        onSubmit={this.handleSubmit}>
+        <Row>
+            <Col xs={5}>
+            <Form.Group controlId="title">
+              <Form.Label>Event:</Form.Label>
+              <Form.Control type="text" placeholder="event title" value={this.state.title} />
+              <Form.Text className="text-muted">
+              </Form.Text>
+            </Form.Group>
+            </Col>
+            <Col xs={7}>
+            <Form.Group controlId="discription">
+              <Form.Label>Discription: </Form.Label>
+              <Form.Control type="text" value={this.state.discription} />
+              <Form.Text className="text-muted">
+              </Form.Text>
+            </Form.Group>
+            </Col>
         </Row>
         <Row>
           <Col xs={5}>
@@ -91,7 +89,6 @@ class NewEvent extends Component {
             </Form.Text>
           </Form.Group>
           </Col>
-
           <Col xs={2}>
           <Form.Group controlId="max_volunteers">
             <Form.Label>Volunteers:</Form.Label>
@@ -100,7 +97,6 @@ class NewEvent extends Component {
             </Form.Text>
           </Form.Group>
           </Col>
-
           <Col xs={5}>
           <Form.Group controlId="datetime">
             <Form.Label>Date and Time</Form.Label>
@@ -110,7 +106,6 @@ class NewEvent extends Component {
           </Form.Group>
           </Col>
         </Row>
-
         <Button variant="primary" type="submit" >
           Plan the event!
         </Button>

@@ -8,7 +8,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const reducer = (state = {events: [], location: [40.715280, -73.954260]}, action) => {
+const reducer = (state = {events: [], location: [40.715280, -73.954260], currentUser: {id: 0}}, action) => {
   switch(action.type) {
     case "ADD_EVENTS":
       return {...state, events: action.payload}
@@ -19,6 +19,8 @@ const reducer = (state = {events: [], location: [40.715280, -73.954260]}, action
       return {...state, events: [...state.events, action.payload]}
     case "ADD_CONFIRM_TO_STATE":
       return {...state}
+    case "ADD_LOGIN_ACCOUNT_TO_STORE":
+    return {...state, currentUser: action.payload }
     default:
       return state
   }

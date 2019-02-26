@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { withRouter} from "react-router-dom"
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 
 class NavigationBar extends Component {
@@ -11,20 +12,30 @@ class NavigationBar extends Component {
   }
 
   //make the nav bar load conditionally
-
+//replace href with onClick={() => this.props.history.push(end url)}
   render() {
     return (
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/">HelpingHand</Navbar.Brand>
+        <Navbar.Brand onClick = {() => this.props.history.push("/")}>HelpingHand</Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="/events">Events</Nav.Link>
-          <Nav.Link href="/attending">Attending</Nav.Link>
-          <Nav.Link href="/hosting">Hosting</Nav.Link>
+          <Nav.Link onClick = {() => this.props.history.push("/events")}>Events</Nav.Link>
+          <Nav.Link onClick = {() => this.props.history.push("/attending")}>Attending</Nav.Link>
+          <Nav.Link onClick = {() => this.props.history.push("/hosting")}>Hosting</Nav.Link>
         </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-info">Search</Button>
-        </Form>
+          <Button
+            onClick = {() => this.props.history.push("/newmember")}
+            variant="outline-info"
+            size="sm"
+          >
+            Become a Member
+          </Button>
+          <Button
+            onClick = {() => this.props.history.push("/login")}
+            variant="outline-info"
+            size="sm"
+          >
+            Login
+          </Button>
       </Navbar>
     );
   }
@@ -46,4 +57,4 @@ const mapDispatchToProps = {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavigationBar))

@@ -63,16 +63,20 @@
 
 .map-display{
   width: 100%;
-  margin: 1%;
+  margin: .25%;
 }
 
 .event-container {
   width: 100%;
-  margin: 1%;
-  border: 1px black;
+  margin: .25%;
+  height: 93vh;
+  padding-right: 30px;
+  overflow: scroll;
+  overflow-x: hidden;
+
 }
-.event-card {
-  border-style: solid;
-  border-width: 1px;
-  margin-bottom: 2px;
+
+
+.btn-sm {
+  margin-left: 1%;
 }

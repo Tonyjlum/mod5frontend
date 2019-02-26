@@ -52,7 +52,7 @@ class Event extends Component {
           </Card.Body>
           <Card.Footer>
             <small className="text-muted">{
-              this.props.donation ? `This project has been funded: $ ${this.props.donation}` : "This project has not funded"
+              this.props.donation ? `This project has been funded: $ ${this.props.donation}` : "This project has not been funded"
             }</small>
           </Card.Footer>
         </Card>
