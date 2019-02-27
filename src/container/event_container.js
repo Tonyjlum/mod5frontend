@@ -27,7 +27,7 @@ class EventContainer extends Component {
       <div className="event-container">
       <NewEvent/>
       <br/>
-        <CardColumns>
+        <CardColumns className="event-card-columns">
         {this.renderEventCards()}
         </CardColumns>
       </div>

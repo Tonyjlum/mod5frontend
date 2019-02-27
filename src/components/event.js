@@ -25,12 +25,15 @@ class Event extends Component {
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        user_id: 1,
+        user_id: this.props.state.currentUser.id,
         event_id: event_id
       })
     })
     .then(response => response.json())
-    .then(json => this.props.addConfrimToState(json))
+    .then(json => {
+      console.log(json.event)
+      this.props.addConfrimToState(json.event)
+    })
     //make post request with the Id and user id to back end
     // add this user to the page,
     //check if the user is attending the event already.
@@ -61,7 +64,7 @@ class Event extends Component {
 
 }
 const mapStateToProps = (state) => {
-  return {events: state.events}
+  return {state}
 }
 
 const mapDispatchToProps = {

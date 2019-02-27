@@ -73,10 +73,29 @@
   padding-right: 30px;
   overflow: scroll;
   overflow-x: hidden;
-
 }
 
 
 .btn-sm {
   margin-left: 1%;
+}
+
+.space-button > * {
+  margin-right: 10px;
+}
+
+.log-out-button {
+  margin-right: 10px;
+}
+
+.center {
+  text-align: center;
+}
+.my-event-card {
+  align: center;
+  width: 50%;
+}
+
+.event-card-columns {
+  column-count: 2;
 }

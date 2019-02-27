@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Form, Button, Row, Col, Alert, ButtonGroup, ToggleButton } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { withRouter} from "react-router-dom"
 
 class LoginForm extends Component {
   state = {
@@ -30,8 +31,7 @@ class LoginForm extends Component {
     })
     .then(response => response.json())
     .then(account => this.props.addLoginAccountToStore(account))
-    
-
+    .then(() => this.props.history.push("/events"))
   }
 
   render(){
@@ -56,8 +56,10 @@ class LoginForm extends Component {
         </Form.Text>
       </Form.Group>
       <div className="radio-button">
-        <input type="radio" id="accountType" name="accountType" value="users"/> Volunteer
         <input type="radio" id="accountType" name="accountType" value="sponsors"/> Sponsor
+        <br/>
+        <input type="radio" id="accountType" name="accountType" value="users" checked/> Volunteer
+
       </div><br/><br/>
 
       <Button variant="primary" type="submit" >
@@ -74,4 +76,4 @@ const mapDispatchToProps = {
 }
 
 
-export default connect(null, mapDispatchToProps)(LoginForm)
+export default withRouter(connect(null, mapDispatchToProps)(LoginForm))

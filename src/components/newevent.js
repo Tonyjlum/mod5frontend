@@ -40,7 +40,7 @@ class NewEvent extends Component {
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        coordinator_id: 1,
+        coordinator_id: this.props.state.currentUser.id,
         datetime: this.state.datetime,
         title: this.state.title,
         max_volunteers: this.state.max_volunteers,
@@ -65,8 +65,8 @@ class NewEvent extends Component {
         <Row>
             <Col xs={5}>
             <Form.Group controlId="title">
-              <Form.Label>Event:</Form.Label>
-              <Form.Control type="text" placeholder="event title" value={this.state.title} />
+              <Form.Label>Event Title:</Form.Label>
+              <Form.Control type="text" value={this.state.title} />
               <Form.Text className="text-muted">
               </Form.Text>
             </Form.Group>
@@ -74,7 +74,7 @@ class NewEvent extends Component {
             <Col xs={7}>
             <Form.Group controlId="discription">
               <Form.Label>Discription: </Form.Label>
-              <Form.Control type="text" value={this.state.discription} />
+              <Form.Control type="text"placeholder="e.g. clean up the trash from Coney Island"  value={this.state.discription} />
               <Form.Text className="text-muted">
               </Form.Text>
             </Form.Group>
@@ -116,7 +116,7 @@ class NewEvent extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {events: state.events}
+  return {state}
 }
 
 const mapDispatchToProps = {

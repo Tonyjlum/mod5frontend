@@ -5,10 +5,39 @@ import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 
 class NavigationBar extends Component {
 
-  componentDidMount() {
-    // fetchFromApi.then(res => {
-    //   this.props.addResultsToStore(res)
-    // })
+
+  navbarForUser = () => {
+    if (this.props.state.currentUser.id === null){
+      return(
+        <div className="space-button">
+        <Button
+          onClick = {() => this.props.history.push("/newmember")}
+          variant="outline-info"
+        >
+          Become a Member
+        </Button>
+        <Button
+          onClick = {() => this.props.history.push("/login")}
+          variant="outline-info"
+        >
+          Login
+        </Button>
+        </div>
+      )
+    } else {
+      return(
+        <div className="log-out-button">
+      <Button
+        onClick = {() => {
+          this.props.history.push("/")
+          this.props.removeCurrentUser()
+        }}
+        variant="outline-info"
+      > Log Out
+      </Button>
+      </div>
+    )
+    }
   }
 
   //make the nav bar load conditionally
@@ -18,41 +47,23 @@ class NavigationBar extends Component {
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand onClick = {() => this.props.history.push("/")}>HelpingHand</Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link onClick = {() => this.props.history.push("/events")}>Events</Nav.Link>
-          <Nav.Link onClick = {() => this.props.history.push("/attending")}>Attending</Nav.Link>
-          <Nav.Link onClick = {() => this.props.history.push("/hosting")}>Hosting</Nav.Link>
+          {this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/events")}>How Can I Help?</Nav.Link>}
+          {this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/attending")}>My Events</Nav.Link>}
+          {this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/hosting")}>Hosting</Nav.Link>}
         </Nav>
-          <Button
-            onClick = {() => this.props.history.push("/newmember")}
-            variant="outline-info"
-            size="sm"
-          >
-            Become a Member
-          </Button>
-          <Button
-            onClick = {() => this.props.history.push("/login")}
-            variant="outline-info"
-            size="sm"
-          >
-            Login
-          </Button>
+        {this.navbarForUser()}
       </Navbar>
     );
   }
 
 }
 
-// gets the state from index.js and only show what you allow
-//logged in is not shown because it was not allowed in
 const mapStateToProps = (state) => {
-  // return state
-  return {test: state.test}
+  return {state}
 }
 
-//send changes to the state in index.js
 const mapDispatchToProps = {
-  // sendToStore: () => ({type: 'MY_ACTION'}),
-  // addResultsToStore: (res) => ({type: 'FETCH_RESULTS', payload: res})
+  removeCurrentUser: () => ({type:"REMOVE_CURRENT_USER", payload: {id: null}})
 }
 
 
