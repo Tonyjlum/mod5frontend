@@ -18,7 +18,7 @@ class NewEvent extends Component {
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
-    }, console.log(this.state))
+    })
   }
 
 
@@ -57,9 +57,10 @@ class NewEvent extends Component {
 
 
   render() {
+    console.log(this.props.state.currentUser)
     return (
       <Form
-        ClassName= "new-event-form"
+        className= "new-event-form"
         onChange={this.handleChange}
         onSubmit={this.handleSubmit}>
         <Row>

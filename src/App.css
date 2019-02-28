@@ -63,12 +63,12 @@
 
 .map-display{
   width: 100%;
-  margin: .25%;
+  margin: .15%;
 }
 
 .event-container {
   width: 100%;
-  margin: .25%;
+  margin: .15%;
   height: 93vh;
   padding-right: 30px;
   overflow: scroll;
@@ -92,7 +92,6 @@
   text-align: center;
 }
 .my-event-card {
-  align: center;
   width: 50%;
 }
 

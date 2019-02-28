@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button, Col } from 'react-bootstrap'
 
 class NewAccountFrom extends Component {
   state = {

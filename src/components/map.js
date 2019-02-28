@@ -4,7 +4,8 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import { connect } from 'react-redux'
 
-
+//alt map link
+//"https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png"
 class MapDisplay extends Component {
 
   componentDidMount(){
@@ -39,7 +40,7 @@ class MapDisplay extends Component {
         zoom={14}>
         <TileLayer
           // attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url="https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png"
         />
         {this.renderPin()}
       </Map>

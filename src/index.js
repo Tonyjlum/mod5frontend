@@ -23,10 +23,8 @@ const reducer = (state = {events: [], location: [40.715280, -73.954260], current
     case "ADD_LOGIN_ACCOUNT_TO_STORE":
       return {...state, currentUser: action.payload }
     case "REMOVE_CONFIRM_FROM_CURRENT_USER":
-      function test(){
-        return "Testing"
-      }
-      return {...state, testing: test()}
+
+      return { ...state }
     case "REMOVE_CURRENT_USER":
       return {...state, currentUser: action.payload}
     default:

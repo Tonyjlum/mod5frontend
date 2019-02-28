@@ -15,7 +15,17 @@ class Event extends Component {
   }
   slotCount = () => {
     const slot = this.props.event.max_volunteers - this.props.event.confirms.length
-     return slot > 0 ? <Button onClick={() => this.handleClick(this.props.event.id)}> {`Join: ${slot} slots left`}</Button> : `This Event is full`
+    console.log(this.props.state.currentUser.id, "from slot count")
+
+    const already_attending =
+      this.props.event.confirms.map(c => c.user_id).includes(this.props.state.currentUser.id)
+
+      if (already_attending) {
+        return <strong>Attending</strong>
+      } else {
+        return slot > 0 ? <Button onClick={() => this.handleClick(this.props.event.id)}> {`Join: ${slot} slots left`}</Button> : `This event is full`
+      }
+
   }
   handleClick = (event_id) => {
     fetch("http://localhost:3000/confirms",{
@@ -29,18 +39,13 @@ class Event extends Component {
         event_id: event_id
       })
     })
+    .then(fetch("http://localhost:3000/events")
     .then(response => response.json())
-    .then(json => {
-      console.log(json.event)
-      this.props.addConfrimToState(json.event)
-    })
-    //make post request with the Id and user id to back end
-    // add this user to the page,
-    //check if the user is attending the event already.
+    .then (events => this.props.addEventsToStore(events))
+  )
   }
 
   render(props) {
-    console.log(this.props)
     return (
         <Card border={this.fundedColor()}>
           <Card.Body>
@@ -68,7 +73,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  addConfrimToState: (confirm) => ({type: "ADD_CONFIRM_TO_STATE", payload: confirm})
+  addEventsToStore: (events) => ({type: "ADD_EVENTS", payload: events})
 }
 
 

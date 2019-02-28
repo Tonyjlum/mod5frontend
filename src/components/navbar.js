@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter} from "react-router-dom"
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
+import { Navbar, Nav, Button } from 'react-bootstrap'
 
 class NavigationBar extends Component {
 
@@ -19,21 +19,21 @@ class NavigationBar extends Component {
         <Button
           onClick = {() => this.props.history.push("/login")}
           variant="outline-info"
-        >
-          Login
+        > Sign in
         </Button>
         </div>
       )
     } else {
       return(
         <div className="log-out-button">
+
       <Button
         onClick = {() => {
           this.props.history.push("/")
           this.props.removeCurrentUser()
         }}
         variant="outline-info"
-      > Log Out
+      > Sign out
       </Button>
       </div>
     )

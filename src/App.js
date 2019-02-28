@@ -8,7 +8,7 @@ import NewUserContainer from './container/newusercontainer.js'
 import LoginForm from './components/loginform.js'
 import MyEventContainer from './container/myeventcontainer.js'
 
-import {BrowserRouter as Router, Route, Link, NavLink} from "react-router-dom"
+import {BrowserRouter as Router, Route} from "react-router-dom"
 
 
 class App extends Component {
