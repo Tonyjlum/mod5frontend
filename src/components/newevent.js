@@ -51,7 +51,13 @@ class NewEvent extends Component {
       })
     })
     .then(response => response.json())
-    .then(json => this.props.addEventToStore(json))
+    .then(json => {
+      this.props.addEventToStore(json)
+      fetch(`http://localhost:3000/users/${json.coordinator_id}`)
+      .then(response => response.json())
+      .then(json => this.props.addEventsToUser(json))
+    })
+    //add event and confirm to currentUser state
     .then(() => this.setState(RESETSTATE))
   }
 
@@ -121,7 +127,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  addEventToStore: (event) => ({type: "ADD_NEW_EVENT", payload: event})
+  addEventToStore: (event) => ({type: "ADD_NEW_EVENT", payload: event}),
+  addEventsToUser:(user) =>({type:"ADD_LOGIN_ACCOUNT_TO_STORE", payload:user})
 }
 
 

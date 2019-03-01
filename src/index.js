@@ -18,13 +18,14 @@ const reducer = (state = {events: [], location: [40.715280, -73.954260], current
       return {...state, location: [action.payload.latitude, action.payload.longitude]}
     case "ADD_NEW_EVENT":
       return {...state, events: [...state.events, action.payload]}
-    case "ADD_CONFIRM_TO_STATE":
-      return {...state}
     case "ADD_LOGIN_ACCOUNT_TO_STORE":
       return {...state, currentUser: action.payload }
-    case "REMOVE_CONFIRM_FROM_CURRENT_USER":
-
-      return { ...state }
+    case "UPDATE_CONFIRMS":
+      return { ...state, currentUser: { ...state.currentUser, confirm_event_info: action.payload}
+      }
+    case "ADD_CONFIRMS":
+      return { ...state, currentUser: { ...state.currentUser, confirm_event_info: [...state.currentUser.confirm_event_info, action.payload]}
+      }
     case "REMOVE_CURRENT_USER":
       return {...state, currentUser: action.payload}
     default:

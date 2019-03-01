@@ -6,16 +6,10 @@ import MyEvent from '../components/myevent.js'
 class MyEventContainer extends Component {
 
   renderMyEvents = () => {
-    return this.props.state.currentUser.confirm_event_info.map(eventdata => {
-      return <MyEvent
-        key={eventdata.confirm.id}
-        event={eventdata.event}
-        confirm={eventdata.confirm}
-        currentUser={this.props.state.currentUser.id}/>
+    return this.props.state.currentUser.confirm_event_info.map(cli => {
+      return <MyEvent key={cli.confirm.id} event={cli.event} confirm={cli.confirm} currentUser={this.props.state.currentUser.id}/>
     })
   }
-
-
 
   render() {
     return (

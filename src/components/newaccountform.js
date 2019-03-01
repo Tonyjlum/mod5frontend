@@ -12,12 +12,10 @@ class NewAccountFrom extends Component {
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
-    }, console.log(this.state))
+    })
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
-    console.log(this.props.accountType)
     fetch(`http://localhost:3000/${this.props.accountType}`,{
       method: 'POST',
       headers: {
@@ -32,7 +30,8 @@ class NewAccountFrom extends Component {
       })
     })
     .then(response => response.json())
-    .then( newAccount => console.log(newAccount))
+    // set the current to user and send the user to the search page after
+    // .then( newAccount => console.log(newAccount))
   }
 
 

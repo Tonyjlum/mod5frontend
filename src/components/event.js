@@ -5,29 +5,30 @@ import { connect } from 'react-redux'
 
 class Event extends Component {
   //save a state for the slot count and cut it off at 0
+  state = {
+    buttonToggle: false
+  }
 
   fundedColor = () => {
-    if (this.props.donation === 0){
-      return "danger"
-    } else {
-      return "primary"
-    }
+    return this.props.donation === 0 ? "danger" : "primary"
   }
+
   slotCount = () => {
     const slot = this.props.event.max_volunteers - this.props.event.confirms.length
-    console.log(this.props.state.currentUser.id, "from slot count")
-
     const already_attending =
       this.props.event.confirms.map(c => c.user_id).includes(this.props.state.currentUser.id)
 
       if (already_attending) {
         return <strong>Attending</strong>
       } else {
-        return slot > 0 ? <Button onClick={() => this.handleClick(this.props.event.id)}> {`Join: ${slot} slots left`}</Button> : `This event is full`
+        return slot > 0 ? <Button disabled={this.state.buttonToggle} onClick={() => {this.handleClick(this.props.event.id)}}> {`Join: ${slot} slots left`}</Button> : `This event is full`
       }
-
   }
+
   handleClick = (event_id) => {
+    this.setState({
+      buttonToggle: !this.state.buttonToggle
+    })
     fetch("http://localhost:3000/confirms",{
       method: 'POST',
       headers: {
@@ -39,10 +40,13 @@ class Event extends Component {
         event_id: event_id
       })
     })
-    .then(fetch("http://localhost:3000/events")
     .then(response => response.json())
-    .then (events => this.props.addEventsToStore(events))
-  )
+    .then(confirm_event_info => this.props.addConfirms(confirm_event_info))
+    .then(fetch("http://localhost:3000/events")
+      .then(response => response.json())
+      .then (events => this.props.addEventsToStore(events))
+    )
+    //do a filter return for the events to froce rerender, confirm_event_info has evens, look for it and send it back.
   }
 
   render(props) {
@@ -73,7 +77,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  addEventsToStore: (events) => ({type: "ADD_EVENTS", payload: events})
+  addEventsToStore: (events) => ({type: "ADD_EVENTS", payload: events}),
+  addConfirms: (confirm_event_info) => ({type: "ADD_CONFIRMS", payload: confirm_event_info}),
 }
 
 

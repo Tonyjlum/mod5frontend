@@ -3,6 +3,7 @@ import {Card, Button, Col, Row} from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 class MyEvent extends Component {
+
   renderButtons = (props) => {
     if (props.event.coordinator_id === props.currentUser){
       return(
@@ -16,14 +17,19 @@ class MyEvent extends Component {
     }
   }
 
-  handleLeave = (event) => {
-    console.log(event)
-    fetch(`http://localhost:3000/confirms/${event.id}`, {
+  handleLeave = (confirm) => {
+    fetch(`http://localhost:3000/confirms/${confirm.id}`, {
       method: "DELETE"
     })
-    .then(response => response.json())
-    .then( deleted_event_id => this.props.removeConfirmFromCurrentUser(deleted_event_id)
-  )
+    .then( response => response.json() )
+    .then( json => this.filterDeletedConfirm(json) )
+    .then( filteredConfirms => this.props.updateConfirms(filteredConfirms) )
+  }
+
+  filterDeletedConfirm = (json) => {
+    return this.props.state.currentUser.confirm_event_info.filter( cei => {
+      return cei.confirm.id !== json.destroyed_confirm_id
+    })
   }
 
   render(){
@@ -55,7 +61,7 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = {
-  removeConfirmFromCurrentUser: (updated_confrim) => ({type: "REMOVE_CONFIRM_FROM_CURRENT_USER", payload: updated_confrim})
+  updateConfirms: (updated_confrim) => ({type: "UPDATE_CONFIRMS", payload: updated_confrim})
 }
 
 

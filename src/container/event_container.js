@@ -15,10 +15,10 @@ class EventContainer extends Component {
 
 
   renderEventCards() {
-      return this.props.events.map( event => {
-        const total_donation = event.donations.map( e => e.amount_per_volunteer).reduce((a,b) => a + b, 0)
-        return <Event key={event.id} event={event} donation={total_donation} />
-    })
+    return this.props.events.map( event => {
+      const total_donation = event.donations.map( e => e.amount_per_volunteer).reduce((a,b) => a + b, 0)
+      return <Event key={event.id} event={event} donation={total_donation} />
+  })
   }
 
   render() {
