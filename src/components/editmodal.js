@@ -1,7 +1,51 @@
 import React, { Component } from 'react';
-import { Modal, Button } from 'react-bootstrap'
+import { Modal, Button, Form } from 'react-bootstrap'
+import { connect } from 'react-redux'
 
 class EditModal extends Component {
+  state = {
+    description: this.props.event.description,
+    datetime: "",
+    max_volunteers: this.props.event.max_volunteers
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
+
+  handleSubmit = () => {
+    this.props.onHide()
+    fetch(`http://localhost:3000/events/${this.props.event.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type" : "application/json",
+        "Accept" : "application/json"
+      },
+      body: JSON.stringify({
+        datetime: this.state.datetime,
+        max_volunteers: this.state.max_volunteers,
+        description: this.state.description
+      })
+    })
+    .then(response => response.json())
+    .then( (updated_event) => {
+        const updatedCEI = this.updateCEI(updated_event)
+        this.props.updateConfirms(updatedCEI)
+      })
+  }
+
+  updateCEI = (updated_event) => {
+    return this.props.state.currentUser.confirm_event_info.map( cei => {
+      if (cei.event.id === updated_event.id) {
+        return {...cei, event: updated_event}
+      } else {
+        return cei
+      }
+    })
+  }
+
 
   render() {
     return (
@@ -12,30 +56,66 @@ class EditModal extends Component {
         show= {this.props.show}
         //set show to true for it to show up
       >
-        <Modal.Header closeButton>
+        <Modal.Header >
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+            Update:  {new Date(this.props.event.title) + ""}
           </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+          </Modal.Header>
+          <Modal.Body>
+            <Form
+              onChange={this.handleChange}
+            >
+            <Form.Group controlId="description">
+              <Form.Label>Event Discription</Form.Label>
+              <Form.Control
+                type="text"
+                defaultValue={this.state.description}/>
+              <Form.Text className="text-muted" >
+              </Form.Text>
+            </Form.Group>
 
-      //Render Form in here, then  fetch for an update.
-          <h4>{this.props.event.title}</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={() => this.props.onHide()} >Close</Button>
-          <Button onClick={() => this.props.onHide()} >Update Event</Button>
+            <Form.Group controlId="datetime">
+              <Form.Label>Previous Date and Time: ({this.props.event.datetime})</Form.Label>
+              <Form.Control
+                type="datetime-local"
 
-        </Modal.Footer>
+                 />
+              <Form.Text className="text-muted">
+              </Form.Text>
+            </Form.Group>
+
+            <Form.Group controlId="max_volunteers">
+              <Form.Label>Volunteers:</Form.Label>
+              <Form.Control
+                type="number"
+                value={this.state.max_volunteers}
+                min= {this.props.event.max_volunteers}
+                 />
+               <Form.Text className="text-muted">
+               </Form.Text>
+             </Form.Group>
+            </Form>
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button onClick={this.props.onHide} >Close</Button>
+            <Button onClick={this.handleSubmit} >Update Event</Button>
+
+          </Modal.Footer>
       </Modal>
     );
   }
 
 }
 
-export default EditModal;
+const mapStateToProps = (state) => {
+  return {state}
+}
+
+const mapDispatchToProps = {
+  updateConfirms: (updated_confrim) => ({type: "UPDATE_CONFIRMS", payload: updated_confrim})
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditModal);

@@ -51,8 +51,8 @@ class Event extends Component {
 
   render(props) {
     return (
-        <Card border={this.fundedColor()}>
-          <Card.Body>
+        <Card border={this.fundedColor()} className="shadow">
+          <Card.Body className="shadow-sm">
             <Card.Title>{this.props.event.title}</Card.Title>
             <Card.Text>{this.props.event.description}</Card.Text>
             <Card.Text>

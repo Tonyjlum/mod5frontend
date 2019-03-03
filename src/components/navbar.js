@@ -45,7 +45,8 @@ class NavigationBar extends Component {
   render() {
     return (
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand onClick = {() => this.props.history.push("/")}>HelpingHand</Navbar.Brand>
+        <Navbar.Brand onClick = {() => this.props.history.push("/")}>
+        HelpingHand ⏩</Navbar.Brand>
         <Nav className="mr-auto">
           {this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/events")}>How Can I Help?</Nav.Link>}
           {this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/attending")}>My Events</Nav.Link>}

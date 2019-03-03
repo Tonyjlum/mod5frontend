@@ -2,20 +2,47 @@ import React, { Component } from 'react';
 import {Card, Button, Col, Row} from 'react-bootstrap'
 import { connect } from 'react-redux'
 import EditModal from './editmodal.js'
+import Moment from 'react-moment'
+import ConfirmContainer from '../container/confirmcontainer.js'
 
 class MyEvent extends Component {
   state = {
-    modalShow : false
+    editModalShow : false,
+    confirmContainerModalShow: false
   }
 
   renderButtons = (props) => {
+    if (Date.parse(props.event.datetime) < Date.parse(new Date()) ){
+      return this.renderButtonsofPassEvents(props)
+    } else {
+      return this.renderButtonsofUpcomingEvents(props)
+    }
+  }
+
+  renderButtonsofPassEvents = (props) => {
+    if (props.event.coordinator_id === props.currentUser){
+      return (<Button
+        variant="outline-success"
+        size="sm"
+        onClick={() => this.setState({ confirmContainerModalShow: true })}
+        >Confirm Volunteers</Button>)
+    } else {
+      const attendance = props.confirm.attend ? "Thank you for Volunteering": ""
+      return (<Card.Text>
+        {`Event Completed. ${attendance}`}
+      </Card.Text>)
+    }
+  }
+
+
+  renderButtonsofUpcomingEvents = (props) => {
     if (props.event.coordinator_id === props.currentUser){
       return(
         <div className="space-button">
           <Button
             variant="outline-secondary"
             size="sm"
-            onClick={() => this.setState({ modalShow: true })}
+            onClick={() => this.setState({ editModalShow: true })}
             >Edit Event</Button>
           <Button
             variant="outline-danger"
@@ -52,12 +79,16 @@ class MyEvent extends Component {
     })
   }
 
-  handleEdit = (event) => {
-    console.log("from handle edit", event)
+  toggleEditModal = () => {
     this.setState({
-      modalShow: !this.state.modalShow
-    }, () => console.log(this.state))
-    //set state of modal to show
+      editModalShow: !this.state.editModalShow
+    })
+  }
+
+  toggleConfrimModal = () => {
+    this.setState({
+      confirmContainerModalShow: !this.state.confirmContainerModalShow
+    })
   }
 
   filterDeletedEventFromCEI = (confirm) => {
@@ -82,6 +113,12 @@ class MyEvent extends Component {
           <Card.Body>
             <Card.Title>{this.props.event.title}</Card.Title>
             <Card.Text>
+              <Moment locale="en" format="MMMM DD, YYYY" date={this.props.event.datetime}/>
+              &nbsp;at&nbsp;
+              <Moment locale="en"format="HH:MM a" date={this.props.event.datetime}/>
+            </Card.Text>
+
+            <Card.Text>
               {this.props.event.description}
             </Card.Text>
           </Card.Body>
@@ -90,7 +127,9 @@ class MyEvent extends Component {
           </Row>
         </Card>
         </Card.Body>
-        <EditModal show={this.state.modalShow} onHide={this.handleEdit} event={this.props.event}/>
+        <EditModal show={this.state.editModalShow} onHide={this.toggleEditModal} event={this.props.event}/>
+
+        <ConfirmContainer show={this.state.confirmContainerModalShow} onHide={this.toggleConfrimModal} event={this.props.event}/>
       </div>
     )
   }

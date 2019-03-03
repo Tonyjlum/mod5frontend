@@ -63,7 +63,7 @@ class NewEvent extends Component {
 
 
   render() {
-    console.log(this.props.state.currentUser)
+
     return (
       <Form
         className= "new-event-form"
@@ -73,7 +73,10 @@ class NewEvent extends Component {
             <Col xs={5}>
             <Form.Group controlId="title">
               <Form.Label>Event Title:</Form.Label>
-              <Form.Control type="text" value={this.state.title} />
+              <Form.Control
+                type="text"
+                value={this.state.title}
+                size="sm"/>
               <Form.Text className="text-muted">
               </Form.Text>
             </Form.Group>
@@ -81,7 +84,11 @@ class NewEvent extends Component {
             <Col xs={7}>
             <Form.Group controlId="discription">
               <Form.Label>Discription: </Form.Label>
-              <Form.Control type="text"placeholder="e.g. clean up the trash from Coney Island"  value={this.state.discription} />
+              <Form.Control
+                type="text"
+                placeholder="e.g. clean up the trash from Coney Island"
+                value={this.state.discription}
+                size="sm" />
               <Form.Text className="text-muted">
               </Form.Text>
             </Form.Group>
@@ -91,7 +98,11 @@ class NewEvent extends Component {
           <Col xs={5}>
           <Form.Group controlId="address">
             <Form.Label>Address: </Form.Label>
-            <Form.Control type="text" value={this.state.address} />
+            <Form.Control
+              type="text"
+              value={this.state.address}
+              size="sm"
+               />
             <Form.Text className="text-muted">
             </Form.Text>
           </Form.Group>
@@ -99,7 +110,11 @@ class NewEvent extends Component {
           <Col xs={2}>
           <Form.Group controlId="max_volunteers">
             <Form.Label>Volunteers:</Form.Label>
-            <Form.Control type="number" value={this.state.max_volunteers} />
+            <Form.Control
+              type="number"
+              value={this.state.max_volunteers}
+              size="sm"
+               />
             <Form.Text className="text-muted">
             </Form.Text>
           </Form.Group>
@@ -107,7 +122,10 @@ class NewEvent extends Component {
           <Col xs={5}>
           <Form.Group controlId="datetime">
             <Form.Label>Date and Time</Form.Label>
-            <Form.Control type="datetime-local" />
+            <Form.Control
+              type="datetime-local"
+              size="sm"
+               />
             <Form.Text className="text-muted">
             </Form.Text>
           </Form.Group>
