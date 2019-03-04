@@ -98,3 +98,7 @@
 .event-card-columns {
   column-count: 2;
 }
+
+.radio-button {
+  float: right;
+}

@@ -129,7 +129,12 @@ class MyEvent extends Component {
         </Card.Body>
         <EditModal show={this.state.editModalShow} onHide={this.toggleEditModal} event={this.props.event}/>
 
-        <ConfirmContainer show={this.state.confirmContainerModalShow} onHide={this.toggleConfrimModal} event={this.props.event}/>
+        <ConfirmContainer
+          show={this.state.confirmContainerModalShow}
+          onHide={this.toggleConfrimModal}
+          event={this.props.event}
+          confirms={this.props.confirm}
+          />
       </div>
     )
   }

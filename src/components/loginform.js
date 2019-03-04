@@ -57,7 +57,7 @@ class LoginForm extends Component {
       </Form.Group>
       <div className="radio-button">
         <input type="radio" id="accountType" name="accountType" value="sponsors"/> Sponsor
-        <br/>
+        &nbsp;&nbsp;
         <input type="radio" id="accountType" name="accountType" value="users" checked/> Volunteer
 
       </div><br/><br/>

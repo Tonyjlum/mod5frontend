@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 class EditModal extends Component {
   state = {
     description: this.props.event.description,
-    datetime: "",
+    datetime: this.props.event.datetime.slice(0,16),
     max_volunteers: this.props.event.max_volunteers
   }
 
@@ -54,11 +54,10 @@ class EditModal extends Component {
         aria-labelledby="contained-modal-title-vcenter"
         centered
         show= {this.props.show}
-        //set show to true for it to show up
       >
         <Modal.Header >
           <Modal.Title id="contained-modal-title-vcenter">
-            Update:  {new Date(this.props.event.title) + ""}
+            Update:  {this.props.event.title}
           </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -75,10 +74,10 @@ class EditModal extends Component {
             </Form.Group>
 
             <Form.Group controlId="datetime">
-              <Form.Label>Previous Date and Time: ({this.props.event.datetime})</Form.Label>
+              <Form.Label>Previous Date and Time:</Form.Label>
               <Form.Control
                 type="datetime-local"
-
+                defaultValue={this.state.datetime}
                  />
               <Form.Text className="text-muted">
               </Form.Text>

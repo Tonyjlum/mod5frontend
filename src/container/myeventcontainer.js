@@ -7,7 +7,7 @@ class MyEventContainer extends Component {
 
   renderMyEvents = () => {
     return this.props.state.currentUser.confirm_event_info.map(cli => {
-      return <MyEvent key={cli.confirm.id} event={cli.event} confirm={cli.confirm} currentUser={this.props.state.currentUser.id}/>
+      return <MyEvent key={cli.confirm.id} event={cli.event}  confirm={cli.confirm} currentUser={this.props.state.currentUser.id}/>
     })
   }
 
