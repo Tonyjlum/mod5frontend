@@ -49,8 +49,12 @@ class NavigationBar extends Component {
         HelpingHand ⏩</Navbar.Brand>
         <Nav className="mr-auto">
           {this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/events")}>How Can I Help?</Nav.Link>}
-          {this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/attending")}>My Events</Nav.Link>}
-          {this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/hosting")}>Hosting</Nav.Link>}
+
+          {
+            this.props.state.sponsor ? (<Nav.Link onClick = {() => this.props.history.push("/contribution")}>My Contributions</Nav.Link>) :
+            (this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/attending")}>My Events</Nav.Link>)}
+
+          {<Nav.Link onClick = {() => this.props.history.push("/hosting")}>About</Nav.Link>}
         </Nav>
         {this.navbarForUser()}
       </Navbar>

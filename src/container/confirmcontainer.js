@@ -19,7 +19,7 @@ class ConfirmContainer extends PureComponent {
 
   renderConfrims = () => {
     return (this.state.confirms.map( confirm => {
-      return <ConfirmVolunteer confirm={confirm} handleRadio={this.handleRadio}/>
+      return <ConfirmVolunteer key={confirm.id} confirm={confirm} handleRadio={this.handleRadio}/>
     }))
   }
 
@@ -27,7 +27,7 @@ class ConfirmContainer extends PureComponent {
     console.log(id, value)
     this.setState({
       confirms: this.state.confirms.map( c => {
-        if (c.id == id){
+        if (c.id === id){
           return {...c, attend: (value === "true" ? true : false)}
         } else {
           return c

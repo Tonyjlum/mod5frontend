@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Col } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import { withRouter} from "react-router-dom"
 
 class NewAccountFrom extends Component {
   state = {
@@ -30,6 +32,11 @@ class NewAccountFrom extends Component {
       })
     })
     .then(response => response.json())
+    .then(user => {
+      this.props.addLoginAccountToStore(user)
+      //make a message letting user know that they made a new account and maybe how to navigate the website
+      this.props.history.push("/events")
+    })
     // set the current to user and send the user to the search page after
     // .then( newAccount => console.log(newAccount))
   }
@@ -78,4 +85,9 @@ class NewAccountFrom extends Component {
 
 }
 
-export default NewAccountFrom;
+const mapDispatchToProps = {
+  addLoginAccountToStore: (account) => ({type: "ADD_LOGIN_ACCOUNT_TO_STORE", payload: account})
+}
+
+
+export default withRouter(connect(null, mapDispatchToProps) (NewAccountFrom))

@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 //change ID back to null
 
-const reducer = (state = {events: [], location: [40.715280, -73.954260], currentUser: {id: null, confirm_event_info: []}, userEvents: []}, action) => {
+const reducer = (state = {events: [], location: [40.715280, -73.954260], currentUser: {id: null, confirm_event_info: []}, userEvents: [], sponsor: false}, action) => {
   switch(action.type) {
     case "ADD_EVENTS":
       return {...state, events: action.payload}
@@ -27,7 +27,9 @@ const reducer = (state = {events: [], location: [40.715280, -73.954260], current
       return { ...state, currentUser: { ...state.currentUser, confirm_event_info: [...state.currentUser.confirm_event_info, action.payload]}
       }
     case "REMOVE_CURRENT_USER":
-      return {...state, currentUser: action.payload}
+      return {...state, currentUser: action.payload, sponsor: false}
+    case "LOGGED_IN_AS_SPONSOR":
+      return{...state, sponsor: true}
     default:
       return state
   }

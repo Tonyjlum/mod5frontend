@@ -30,8 +30,14 @@ class LoginForm extends Component {
       })
     })
     .then(response => response.json())
-    .then(account => this.props.addLoginAccountToStore(account))
-    .then(() => this.props.history.push("/events"))
+    .then(account => {
+      this.props.addLoginAccountToStore(account)
+      this.props.history.push("/events")
+      console.log(this.state.accountType, "after login")
+      if (this.state.accountType === "sponsors"){
+        this.props.markSponsorInStore()
+      }
+    })
   }
 
   render(){
@@ -72,7 +78,10 @@ class LoginForm extends Component {
 
 }
 const mapDispatchToProps = {
-  addLoginAccountToStore: (account) => ({type: "ADD_LOGIN_ACCOUNT_TO_STORE", payload: account})
+  addLoginAccountToStore: (account) => ({type: "ADD_LOGIN_ACCOUNT_TO_STORE", payload: account}),
+  markSponsorInStore: () => ({
+    type:"LOGGED_IN_AS_SPONSOR"
+  })
 }
 
 

@@ -6,7 +6,7 @@ const RESETSTATE = {
   datetime: "",
   title: "",
   discription: "",
-  max_volunteers: 5,
+  max_volunteers: "",
   address: "",
   lat: 0,
   long: 0
@@ -124,6 +124,7 @@ class NewEvent extends Component {
             <Form.Label>Date and Time</Form.Label>
             <Form.Control
               type="datetime-local"
+              value={this.state.datetime.slice(0,16)}
               size="sm"
                />
             <Form.Text className="text-muted">

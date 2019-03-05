@@ -13,12 +13,18 @@ class MapDisplay extends Component {
       this.props.addLocationToStore(position.coords)})
   }
 
+  filteredEvents = () => {
+    return this.props.events.filter( event => {
+      return Date.parse(event.datetime) > Date.parse(new Date())
+    })
+  }
+
   renderPin = () => {
     let currentIcon = L.icon({
       iconUrl: 'https://unpkg.com/leaflet@1.4.0/dist/images/marker-icon-2x.png',
       iconSize: [18, 30]
     })
-    return this.props.events.map( (event, index) => {
+    return this.filteredEvents().map( (event, index) => {
       const position = [event.lat, event.long]
       return (
         <Marker key={index} position={position} icon={currentIcon}>
