@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
+
 class EditModal extends Component {
   state = {
     description: this.props.event.description,
@@ -61,9 +62,7 @@ class EditModal extends Component {
           </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form
-              onChange={this.handleChange}
-            >
+            <Form onChange={this.handleChange} >
             <Form.Group controlId="description">
               <Form.Label>Event Discription</Form.Label>
               <Form.Control

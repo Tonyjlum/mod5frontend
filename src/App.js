@@ -7,6 +7,7 @@ import Homepage from './components/homepage.js'
 import NewUserContainer from './container/newusercontainer.js'
 import LoginForm from './components/loginform.js'
 import MyEventContainer from './container/myeventcontainer.js'
+import DonationContainer from './container/donationscontainer.js'
 
 import {BrowserRouter as Router, Route} from "react-router-dom"
 
@@ -50,6 +51,11 @@ class App extends Component {
     return <MyEventContainer />
   }
 
+  renderMyDonationContainer = () => {
+    return <DonationContainer />
+  }
+
+
   render() {
     return (
       <Router>
@@ -60,6 +66,7 @@ class App extends Component {
           <Route exact path="/newmember" component={this.renderNewMemeber}/>
           <Route exact path ="/login" component={this.renderLoginForm}/>
           <Route exact path = "/attending" component={this.renderMyEventContainer}/>
+          <Route exact path = "/contribution" component={this.renderMyDonationContainer} />
         </div>
       </Router>
     )

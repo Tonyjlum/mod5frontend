@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Event from '../components/event.js'
-import { CardColumns } from 'react-bootstrap'
+import { CardColumns, Alert } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import NewEvent from '../components/newevent.js'
 
@@ -31,8 +31,6 @@ class EventContainer extends Component {
   }
 
   render() {
-    console.log(this.props, "from EC");
-
     return (
       <div className="event-container">
       {!this.props.sponsor_logged_in && <NewEvent/>}
@@ -40,6 +38,7 @@ class EventContainer extends Component {
         <CardColumns className="event-card-columns">
         {this.renderEventCards()}
         </CardColumns>
+
       </div>
     );
   }

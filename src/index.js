@@ -10,7 +10,34 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 //change ID back to null
 
-const reducer = (state = {events: [], location: [40.715280, -73.954260], currentUser: {id: null, confirm_event_info: []}, userEvents: [], sponsor: false}, action) => {
+const TESTSPONSOR = ({
+  "id": 1,
+  "first_name": "Bill",
+  "last_name": "Gates",
+  "credit": 1997010,
+  "total_donations": 2990,
+  "donations": [
+    {
+      "id": 1,
+      "event_id": 1,
+      "sponsor_id": 1,
+      "amount_per_volunteer": 100,
+      "sponsor_name": "Bill Gates"
+    },
+    {
+      "id": 4,
+      "event_id": 2,
+      "sponsor_id": 1,
+      "amount_per_volunteer": 55,
+      "sponsor_name": "Bill Gates"
+    }
+  ]
+})
+const TESTSTATE = {events: [], location: [40.715280, -73.954260], currentUser: TESTSPONSOR, userEvents: [], sponsor: true}
+
+const DEFAULTSTATE = {events: [], location: [40.715280, -73.954260], currentUser: {id: null, confirm_event_info: [], donations: []}, userEvents: [], sponsor: false}
+
+const reducer = (state = DEFAULTSTATE, action) => {
   switch(action.type) {
     case "ADD_EVENTS":
       return {...state, events: action.payload}
@@ -26,10 +53,14 @@ const reducer = (state = {events: [], location: [40.715280, -73.954260], current
     case "ADD_CONFIRMS":
       return { ...state, currentUser: { ...state.currentUser, confirm_event_info: [...state.currentUser.confirm_event_info, action.payload]}
       }
+    case "ADD_DONATIONS_TO_USER":
+    return {...state, currentUser:{...state.currentUser, donations: [...state.currentUser.donations, action.payload]} }
     case "REMOVE_CURRENT_USER":
       return {...state, currentUser: action.payload, sponsor: false}
     case "LOGGED_IN_AS_SPONSOR":
-      return{...state, sponsor: true}
+      return {...state, sponsor: true}
+      case "ADD_DONATIONS_TO_EVENT":
+      return {...state, events: action.payload}
     default:
       return state
   }

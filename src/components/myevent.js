@@ -115,7 +115,7 @@ class MyEvent extends Component {
             <Card.Text>
               <Moment locale="en" format="MMMM DD, YYYY" date={this.props.event.datetime}/>
               &nbsp;at&nbsp;
-              <Moment locale="en"format="HH:MM a" date={this.props.event.datetime}/>
+              <Moment locale="en"format="LT" date={this.props.event.datetime}/>
             </Card.Text>
 
             <Card.Text>
