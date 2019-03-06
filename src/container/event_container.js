@@ -33,12 +33,15 @@ class EventContainer extends Component {
   render() {
     return (
       <div className="event-container">
-      {!this.props.sponsor_logged_in && <NewEvent/>}
-      <br/>
-        <CardColumns className="event-card-columns">
-        {this.renderEventCards()}
-        </CardColumns>
-
+        <div className="form-container">
+          {!this.props.sponsor_logged_in && <NewEvent/>}
+        </div>
+        <br/>
+        <div className="event-cards-container">
+          <CardColumns className="event-card-columns">
+            {this.renderEventCards()}
+          </CardColumns>
+          </div>
       </div>
     );
   }

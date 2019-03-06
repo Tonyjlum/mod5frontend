@@ -67,14 +67,16 @@
 }
 
 .event-container {
-  width: 100%;
+  width: 70%;
   margin: .15%;
   height: 93vh;
   padding-right: 30px;
-  overflow: scroll;
   overflow-x: hidden;
 }
 
+.form-container {
+  height: 30%;
+}
 
 .btn-sm {
   margin-left: 1%;
@@ -101,4 +103,60 @@
 
 .radio-button {
   float: right;
+}
+
+.homepage-top {
+  /* margin-top: 0.1%; */
+  position: relative;
+  text-align: left;
+  color: white;
+  text-shadow: 0px 0px 100px grey;
+}
+.landing-text {
+  position: absolute;
+  top: 13%;
+  right: 15%;
+}
+
+.homepage-bottom {
+  display: flex;
+  padding-left: 90px;
+}
+
+.homepage-bottom.th {
+  width: 33%;
+  float: left;
+}
+
+.navbar {
+  /* padding: .5rem 10% !important; */
+}
+
+.card-img-top {
+    height: 7vw;
+    margin-top: .4em;
+    /* object-fit: cover; */
+
+}
+.home-card{
+  border-style: none !important;
+}
+.card {
+  opacity: 0.85;
+}
+
+.card-columns {
+  column-count: 2 !important;
+}
+
+.form-container {
+  height: 20%;
+}
+.event-cards-container {
+  height: 77.39%;
+  overflow-y: scroll;
+}
+
+body {
+  background-image: url("https://i.ibb.co/wW3LXnq/dust-scratches.png")
 }

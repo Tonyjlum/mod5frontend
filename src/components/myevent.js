@@ -107,25 +107,25 @@ class MyEvent extends Component {
     return (
       <div>
         <Card.Body className="my-event-card">
-        <Card className="text-center">
-        <Row className="justify-content-md-center">
-        <Col xs={7} className>
-          <Card.Body>
-            <Card.Title>{this.props.event.title}</Card.Title>
-            <Card.Text>
-              <Moment locale="en" format="MMMM DD, YYYY" date={this.props.event.datetime}/>
-              &nbsp;at&nbsp;
-              <Moment locale="en"format="LT" date={this.props.event.datetime}/>
-            </Card.Text>
+          <Card className="text-center">
+            <Row className="justify-content-md-center">
+              <Col xs={7} className>
+                <Card.Body>
+                  <Card.Title>{this.props.event.title}</Card.Title>
+                  <Card.Text>
+                    <Moment locale="en" format="MMMM DD, YYYY" date={this.props.event.datetime}/>
+                    &nbsp;at&nbsp;
+                    <Moment locale="en"format="LT" date={this.props.event.datetime}/>
+                  </Card.Text>
 
-            <Card.Text>
-              {this.props.event.description}
-            </Card.Text>
-          </Card.Body>
-          {this.renderButtons(this.props)}
-          </Col>
-          </Row>
-        </Card>
+                  <Card.Text>
+                    {this.props.event.description}
+                  </Card.Text>
+                </Card.Body>
+                {this.renderButtons(this.props)}
+                </Col>
+              </Row>
+          </Card>
         </Card.Body>
         <EditModal show={this.state.editModalShow} onHide={this.toggleEditModal} event={this.props.event}/>
 

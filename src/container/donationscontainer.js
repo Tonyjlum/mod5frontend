@@ -7,7 +7,7 @@ class DonationContainer extends Component {
   renderDonations = () => {
     console.log(this.props.state)
     return this.props.state.currentUser.donations.map( donation => {
-      return <MyDonation key= {donation.id}donation={donation} />
+      return <MyDonation key= {donation.id} donation={donation} />
     })
   }
   render() {
