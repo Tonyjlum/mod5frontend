@@ -21,7 +21,7 @@ class NewUserContainer extends Component {
   render() {
     return (
         <Row className="justify-content-md-center" >
-          <Col xs lg="9">
+          <Col xs lg="5" className="center">
           {this.state.showButton && <Button onClick={()=>{this.handlebuttonselect("users")}}>I want to help as a Volunteer</Button>}
           <br/>
           <br/>

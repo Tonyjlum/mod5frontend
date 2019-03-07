@@ -49,8 +49,9 @@ class NewAccountFrom extends Component {
         onSubmit={this.handleSubmit}
         className="justify-content-md-center"
       >
-      <Col xs lg="5">
+      <Col xs lg="12">
       <h1>Welcome to Helping Hand</h1>
+      <br/><br/>
       <Form.Group controlId="first_name">
         <Form.Label>First Name:</Form.Label>
         <Form.Control type="text" value={this.state.first_name} />

@@ -178,3 +178,14 @@
 body {
   background-image: url("https://i.ibb.co/wW3LXnq/dust-scratches.png")
 }
+
+.col-lg-5  {
+  margin: 50px;
+}
+.col-lg-5 > * {
+  margin: 20px;
+
+}
+.col-lg-6 {
+  align: center;
+}

@@ -47,10 +47,11 @@ class LoginForm extends Component {
       <Form
         onChange={this.handleChange}
         onSubmit={this.handleSubmit}
-        className="justify-content-md-center"
+        className="justify-content-md-center "
       >
       <Col xs lg="6">
-      <h1>Welcome to Helping Hand</h1>
+      <h1 align= "center">Welcome to Helping Hand</h1>
+      <br/><br/>
       <Form.Group controlId="email">
         <Form.Label>Email:</Form.Label>
         <Form.Control type="text" value={this.state.email} />
