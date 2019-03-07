@@ -18,7 +18,7 @@ class EditModal extends Component {
 
   handleSubmit = () => {
     this.props.onHide()
-    fetch(`http://localhost:3000/events/${this.props.event.id}`, {
+    fetch(`http://${window.location.hostname}:3000/events/${this.props.event.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type" : "application/json",

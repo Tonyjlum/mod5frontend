@@ -61,7 +61,7 @@ class MyEvent extends Component {
   }
 
   handleLeave = (confirm) => {
-    fetch(`http://localhost:3000/confirms/${confirm.id}`, {
+    fetch(`http://${window.location.hostname}:3000/confirms/${confirm.id}`, {
       method: "DELETE"
     })
     .then( response => response.json() )
@@ -70,7 +70,7 @@ class MyEvent extends Component {
   }
 
   handleDelete = (event_id, confirm) => {
-    fetch(`http://localhost:3000/events/${event_id}`,{
+    fetch(`http://${window.location.hostname}:3000/events/${event_id}`,{
       method: "DELETE"
     })
     .then( () => {

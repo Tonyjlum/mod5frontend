@@ -50,7 +50,7 @@ class Event extends Component {
     this.setState({
       userButtonToggle: !this.state.userButtonToggle
     })
-    fetch("http://localhost:3000/confirms",{
+    fetch(`http://${window.location.hostname}:3000/confirms`,{
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -63,12 +63,29 @@ class Event extends Component {
     })
     .then(response => response.json())
     .then(confirm_event_info => this.props.addConfirms(confirm_event_info))
-    .then(fetch("http://localhost:3000/events")
+    .then(fetch(`http://${window.location.hostname}:3000/events`)
       .then(response => response.json())
       .then (events => this.props.addEventsToStore(events))
     )
     //do a filter return for the events to froce rerender, confirm_event_info has evens, look for it and send it back.
   }
+
+  sponsorCount = () => {
+    if (this.props.event.donations.length > 1) {
+      return ` ${this.props.event.donations.length} sponsors`
+    } else {
+      return " a sponsor"
+    }
+  }
+
+  eventDiscription = () =>{
+    if (this.props.event.description.length > 160) {
+      return `${this.props.event.description.slice(0,157)}...`
+    } else {
+      return this.props.event.description
+    }
+  }
+
 
   render(props) {
     return (
@@ -79,17 +96,20 @@ class Event extends Component {
         >
         <Card.Body className="shadow-sm">
           <Card.Title>{this.props.event.title}</Card.Title>
-          <Card.Text>{this.props.event.description}</Card.Text>
+          <Card.Text><small>{this.eventDiscription()}</small></Card.Text>
           <Card.Text>
-            <Moment locale="en" format="MMMM DD, YYYY" className= "date-event-card">{this.props.event.datetime}</Moment>
-            &nbsp;at&nbsp;
-            <Moment format="LT" className="time-event-card">{this.props.event.datetime}</Moment>
+            <small>
+              <Moment locale="en" format="MMMM DD, YYYY" className= "date-event-card">{this.props.event.datetime}</Moment>
+              &nbsp;at&nbsp;
+              <Moment format="LT" className="time-event-card">{this.props.event.datetime}</Moment>
+            </small>
           </Card.Text>
           {this.props.state.sponsor ? this.sponsorButton() :this.userButton()}
         </Card.Body>
         <Card.Footer>
+        <small> Coordinated by: {this.props.event.coordinator_name}</small> <br/>
           <small className="text-muted">{
-            this.props.donation ? `This project has been funded: $ ${this.props.donation}` : "This project has not been funded"
+            this.props.donation ? `This project has been funded: $ ${this.props.donation} by ${this.sponsorCount()}` : "This project has not been funded"
           }</small>
         </Card.Footer>
 

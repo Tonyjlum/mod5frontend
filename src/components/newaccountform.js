@@ -18,7 +18,7 @@ class NewAccountFrom extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:3000/${this.props.accountType}`,{
+    fetch(`http://${window.location.hostname}:3000/${this.props.accountType}`,{
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ class NewAccountFrom extends Component {
     .then(user => {
       this.props.addLoginAccountToStore(user)
       //make a message letting user know that they made a new account and maybe how to navigate the website
-      this.props.history.push("/events")
+      this.props.history.push("/login")
     })
     // set the current to user and send the user to the search page after
     // .then( newAccount => console.log(newAccount))

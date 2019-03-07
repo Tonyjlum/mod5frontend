@@ -7,7 +7,7 @@ import NewEvent from '../components/newevent.js'
 class EventContainer extends Component {
 
   componentDidMount() {
-    fetch("http://localhost:3000/events")
+    fetch(`http://${window.location.hostname}:3000/events`)
     .then(reponse => reponse.json())
     .then(events => this.props.addEventsToStore(events))
   }

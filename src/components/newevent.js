@@ -33,7 +33,7 @@ class NewEvent extends Component {
   }
 
   postNewEvent = () => {
-    fetch(`http://localhost:3000/events`, {
+    fetch(`http://${window.location.hostname}:3000/events`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +53,7 @@ class NewEvent extends Component {
     .then(response => response.json())
     .then(json => {
       this.props.addEventToStore(json)
-      fetch(`http://localhost:3000/users/${json.coordinator_id}`)
+      fetch(`http://${window.location.hostname}:3000/users/${json.coordinator_id}`)
       .then(response => response.json())
       .then(json => this.props.addEventsToUser(json))
     })
@@ -132,7 +132,7 @@ class NewEvent extends Component {
           </Form.Group>
           </Col>
         </Row>
-        <Button variant="primary" type="submit" >
+        <Button variant="primary" type="submit" className="btn-small">
           Plan the event!
         </Button>
       </Form>

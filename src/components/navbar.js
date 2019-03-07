@@ -25,12 +25,13 @@ class NavigationBar extends Component {
       )
     } else {
       return(
-        <div className="log-out-button">
 
+        <div className="log-out-button">
       <Button
         onClick = {() => {
           this.props.history.push("/")
           this.props.removeCurrentUser()
+          localStorage.removeItem("user")
         }}
         variant="outline-info"
       > Sign out
@@ -44,7 +45,7 @@ class NavigationBar extends Component {
 //replace href with onClick={() => this.props.history.push(end url)}
   render() {
     return (
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" >
         <Navbar.Brand onClick = {() => this.props.history.push("/")}>
         HelpingHand ⏩</Navbar.Brand>
         <Nav className="mr-auto">
@@ -56,6 +57,13 @@ class NavigationBar extends Component {
 
           {<Nav.Link onClick = {() => this.props.history.push("/hosting")}>About</Nav.Link>}
         </Nav>
+        <Navbar.Brand >
+          {this.props.state.sponsor && `Total Contribution: $ ${this.props.state.currentUser.total_donations}.00`}
+          {this.props.state.sponsor == false && this.props.state.currentUser.id !== null && `Credit Earned: $ ${this.props.state.currentUser.credit}.00`}
+        </Navbar.Brand>
+        <Navbar.Brand>
+        {this.props.state.currentUser.email}
+        </Navbar.Brand>
         {this.navbarForUser()}
       </Navbar>
     );

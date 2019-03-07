@@ -8,6 +8,7 @@ import NewUserContainer from './container/newusercontainer.js'
 import LoginForm from './components/loginform.js'
 import MyEventContainer from './container/myeventcontainer.js'
 import DonationContainer from './container/donationscontainer.js'
+import { connect } from 'react-redux'
 
 import {BrowserRouter as Router, Route} from "react-router-dom"
 
@@ -55,6 +56,22 @@ class App extends Component {
     return <DonationContainer />
   }
 
+  componentDidMount() {
+    const token = localStorage.getItem("user")
+    const accountType = localStorage.getItem("accountType")
+    if (token) {
+      fetch(`http://${window.location.hostname}:3000/${accountType}/${token}`)
+      .then(response => response.json())
+      .then( user => {
+        this.props.addLoginAccountToStore(user)
+        if (accountType === "sponsors") {
+          this.props.markSponsorInStore()
+        }
+      })
+
+    }
+  }
+
 
   render() {
     return (
@@ -72,5 +89,11 @@ class App extends Component {
     )
   }
 }
+const mapDispatchToProps = {
+  addLoginAccountToStore: (account) => ({type: "ADD_LOGIN_ACCOUNT_TO_STORE", payload: account}),
+  markSponsorInStore: () => ({
+    type:"LOGGED_IN_AS_SPONSOR"
+  })
+}
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);

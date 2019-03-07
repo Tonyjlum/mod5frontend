@@ -69,6 +69,7 @@
 .event-container {
   width: 70%;
   margin: .15%;
+  margin-left: .5%;
   height: 93vh;
   padding-right: 30px;
   overflow-x: hidden;
@@ -93,8 +94,20 @@
 .center {
   text-align: center;
 }
-.my-event-card {
+.my-event-container {
+  float: left;
+  display: flex;
+  flex-direction: column;
   width: 50%;
+  transform: translateX(50%);
+  column-count:
+}
+
+.my-event-card {
+  /* width: 50%; */
+
+  align-items: center;
+
 }
 
 .event-card-columns {
@@ -147,16 +160,21 @@
 
 .card-columns {
   column-count: 2 !important;
+
 }
 
 .form-container {
-  height: 20%;
+  height: 19.5%;
 }
 .event-cards-container {
   height: 77.39%;
   overflow-y: scroll;
+  margin-right: -3px
 }
 
+.navbar-brand {
+  font-size: 1em;
+}
 body {
   background-image: url("https://i.ibb.co/wW3LXnq/dust-scratches.png")
 }

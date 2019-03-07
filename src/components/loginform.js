@@ -13,12 +13,12 @@ class LoginForm extends Component {
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
-    })
+    }, console.log(this.state))
   }
 
   handleSubmit = e => {
     e.preventDefault()
-    fetch(`http://localhost:3000/${this.state.accountType}/login`,{
+    fetch(`http://${window.location.hostname}:3000/${this.state.accountType}/login`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,6 +31,8 @@ class LoginForm extends Component {
     })
     .then(response => response.json())
     .then(account => {
+      localStorage.setItem("user", account.id)
+      localStorage.setItem("accountType", this.state.accountType)
       this.props.addLoginAccountToStore(account)
       this.props.history.push("/events")
       console.log(this.state.accountType, "after login")
@@ -62,7 +64,7 @@ class LoginForm extends Component {
         </Form.Text>
       </Form.Group>
       <div className="radio-button">
-        <input type="radio" id="accountType" name="accountType" value="sponsors"/> Sponsor
+        <input type="radio" id="accountType" name="accountType" value="sponsors" /> Sponsor
         &nbsp;&nbsp;
         <input type="radio" id="accountType" name="accountType" value="users" checked/> Volunteer
 

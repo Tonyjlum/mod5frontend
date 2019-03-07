@@ -11,9 +11,17 @@ class MyEventContainer extends Component {
     })
   }
 
+  renderEventStats = () => {
+    if (this.props.currentUser.confirm_event_info.count > 1) {
+      return ` You have confirmed to ${this.props.currentUser.confirm_event_info.count} events.`
+    } else {
+      return ` You have confirmed to ${this.props.currentUser.confirm_event_info.count} event.`
+    }
+  }
+
   render() {
     return (
-      <div>
+      <div className="my-event-container">
         <h1 className="center"> My Events</h1>
         <br/>
         {this.renderMyEvents()}

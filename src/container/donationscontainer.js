@@ -14,6 +14,7 @@ class DonationContainer extends Component {
 
     return (
       <div>
+        <h1 className="center"> My Contributions</h1>
         {this.renderDonations()}
       </div>
     );

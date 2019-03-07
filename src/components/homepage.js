@@ -6,13 +6,13 @@ import {CardGroup, Card} from 'react-bootstrap'
 const Homepage = (props) => {
   return(
     <>
-      <div class= "homepage-top">
+      <div className= "homepage-top">
         <img
           src="https://i.ibb.co/hDvg3YG/Untitled.png"
           width= "100%"
           position= "absolute"
           />
-          <div class="landing-text">
+          <div className="landing-text">
             <h1>Be the change <br/>
             you want to see
             in the world</h1>
