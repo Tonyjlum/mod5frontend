@@ -25,3 +25,5 @@ export const TESTSPONSOR = ({
     }
   ]
 })
+
+export const GEOAPI = `AIzaSyA-kXyO4hu_HuTp2rb36ub5Adun3uY88n8`
