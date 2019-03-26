@@ -75,6 +75,7 @@ class NewEvent extends Component {
             <Form.Group controlId="title">
               <Form.Label>Event Title:</Form.Label>
               <Form.Control
+                required
                 type="text"
                 value={this.state.title}
                 size="sm"/>
@@ -86,6 +87,7 @@ class NewEvent extends Component {
             <Form.Group controlId="discription">
               <Form.Label>Discription: </Form.Label>
               <Form.Control
+                required
                 type="text"
                 placeholder="e.g. clean up the trash from Coney Island"
                 value={this.state.discription}
@@ -100,6 +102,7 @@ class NewEvent extends Component {
           <Form.Group controlId="address">
             <Form.Label>Address: </Form.Label>
             <Form.Control
+              required
               type="text"
               value={this.state.address}
               size="sm"
@@ -112,6 +115,7 @@ class NewEvent extends Component {
           <Form.Group controlId="max_volunteers">
             <Form.Label>Volunteers:</Form.Label>
             <Form.Control
+              required
               type="number"
               value={this.state.max_volunteers}
               size="sm"
@@ -124,6 +128,7 @@ class NewEvent extends Component {
           <Form.Group controlId="datetime">
             <Form.Label>Date and Time</Form.Label>
             <Form.Control
+              required
               type="datetime-local"
               value={this.state.datetime.slice(0,16)}
               size="sm"

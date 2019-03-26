@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { withRouter} from "react-router-dom"
 import * as Const from '../const.js'
 
-
 class GuestSponsorButton extends Component {
 
   handleClick = () =>{
@@ -21,14 +20,14 @@ class GuestSponsorButton extends Component {
     })
     .then(response => response.json())
     .then(sponsorAccount => {
+      this.props.removeCurrentUser()
+      localStorage.removeItem("user")
       this.props.markSponsorInStore()
       this.props.addLoginAccountToStore(sponsorAccount)
       localStorage.setItem("user", sponsorAccount.id)
       localStorage.setItem("accountType", "sponsors")
       this.props.history.push("/events")
     })
-
-
   }
 
   render() {
@@ -43,10 +42,16 @@ class GuestSponsorButton extends Component {
 }
 
 const mapDispatchToProps = {
-  addLoginAccountToStore: (account) => ({type: "ADD_LOGIN_ACCOUNT_TO_STORE", payload: account}),
+  addLoginAccountToStore: (account) => ({
+    type: "ADD_LOGIN_ACCOUNT_TO_STORE",
+    payload: account
+  }),
   markSponsorInStore: () => ({
     type:"LOGGED_IN_AS_SPONSOR"
-  })
+  }),
+  removeCurrentUser: () => ({
+    type:"REMOVE_CURRENT_USER",
+    payload: {id: null}})
 }
 
 export default withRouter(connect(null, mapDispatchToProps)(GuestSponsorButton))

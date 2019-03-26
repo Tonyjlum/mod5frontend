@@ -4,7 +4,7 @@ import GuestSponsorButton from './guestsponsorbutton.js'
 import GuestVolunteerButton from './guestvolunteerbutton.js'
 
 
-const Homepage = (props) => {
+const Homepage = () => {
   return(
     <>
       <div className= "homepage-top">

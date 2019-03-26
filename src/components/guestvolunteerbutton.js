@@ -21,6 +21,8 @@ class GuestVolunteerButton extends Component {
     })
     .then(response => response.json())
     .then(volunteerAccount => {
+      this.props.removeCurrentUser()
+      localStorage.removeItem("user")
       this.props.addLoginAccountToStore(volunteerAccount)
       localStorage.setItem("user", volunteerAccount.id)
       localStorage.setItem("accountType", "users")
@@ -42,10 +44,14 @@ class GuestVolunteerButton extends Component {
 }
 
 const mapDispatchToProps = {
-  addLoginAccountToStore: (account) => ({type: "ADD_LOGIN_ACCOUNT_TO_STORE", payload: account}),
-  markSponsorInStore: () => ({
-    type:"LOGGED_IN_AS_SPONSOR"
-  })
+  addLoginAccountToStore: (account) => ({
+    type: "ADD_LOGIN_ACCOUNT_TO_STORE",
+    payload: account
+  }),
+  removeCurrentUser: () => ({
+    type:"REMOVE_CURRENT_USER",
+    payload: {id: null}})
 }
+
 
 export default withRouter(connect(null, mapDispatchToProps)(GuestVolunteerButton))
