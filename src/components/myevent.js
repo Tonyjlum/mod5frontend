@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import EditModal from './editmodal.js'
 import Moment from 'react-moment'
 import ConfirmContainer from '../container/confirmcontainer.js'
+import * as Const from '../const.js'
 
 class MyEvent extends Component {
   state = {

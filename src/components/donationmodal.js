@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import * as Const from '../const.js'
+
 class DonationModal extends Component {
   state = {
     donationAmount: 5

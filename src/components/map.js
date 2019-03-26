@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import GoogleMapReact from 'google-map-react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import { connect } from 'react-redux'
@@ -45,7 +44,6 @@ class MapDisplay extends Component {
         center={this.props.location}
         zoom={14}>
         <TileLayer
-          // attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png"
         />
         {this.renderPin()}

@@ -3,6 +3,7 @@ import Event from '../components/event.js'
 import { CardColumns, Alert } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import NewEvent from '../components/newevent.js'
+import * as Const from '../const.js'
 
 class EventContainer extends Component {
 

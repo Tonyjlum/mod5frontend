@@ -3,6 +3,7 @@ import { Button, Card } from 'react-bootstrap'
 import Moment from 'react-moment';
 import { connect } from 'react-redux'
 import DonationModal from './donationmodal.js'
+import * as Const from '../const.js'
 
 class Event extends Component {
   //save a state for the slot count and cut it off at 0

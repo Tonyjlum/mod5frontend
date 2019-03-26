@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { withRouter} from "react-router-dom"
+import * as Const from '../const.js'
 
 class NewAccountFrom extends Component {
   state = {

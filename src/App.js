@@ -9,6 +9,7 @@ import LoginForm from './components/loginform.js'
 import MyEventContainer from './container/myeventcontainer.js'
 import DonationContainer from './container/donationscontainer.js'
 import { connect } from 'react-redux'
+import * as Const from './const.js'
 
 import {BrowserRouter as Router, Route} from "react-router-dom"
 
@@ -60,7 +61,7 @@ class App extends Component {
     const token = localStorage.getItem("user")
     const accountType = localStorage.getItem("accountType")
     if (token) {
-      fetch(`http://${window.location.hostname}:3000/${accountType}/${token}`)
+      fetch(`Const.ENDPOINT${accountType}/${token}`)
       .then(response => response.json())
       .then( user => {
         this.props.addLoginAccountToStore(user)

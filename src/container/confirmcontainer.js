@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap'
 import ConfirmVolunteer from '../components/confirmvolunteers.js'
+import * as Const from '../const.js'
 
 class ConfirmContainer extends PureComponent {
   state= {
