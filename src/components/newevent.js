@@ -25,7 +25,7 @@ class NewEvent extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.address}&key=${process.env.GEOLOCATIONAPIKEY}`)
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.address}&key=${ENV[GEOLOCATIONAPIKEY]}`)
     .then(response => response.json())
     .then(geolocation => this.setState({
       lat: geolocation.results[0].geometry.location.lat,
