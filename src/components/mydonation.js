@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card, Button, Col, Row} from 'react-bootstrap'
+import {Card, Col, Row} from 'react-bootstrap'
 
 class MyDonation extends Component {
 

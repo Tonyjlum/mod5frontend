@@ -47,7 +47,7 @@ class NavigationBar extends Component {
     return (
       <Navbar bg="dark" variant="dark" >
         <Navbar.Brand onClick = {() => this.props.history.push("/")}>
-        HelpingHand ⏩</Navbar.Brand>
+        HelpingHand</Navbar.Brand>
         <Nav className="mr-auto">
           {this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/events")}>How Can I Help?</Nav.Link>}
 
@@ -59,7 +59,7 @@ class NavigationBar extends Component {
         </Nav>
         <Navbar.Brand >
           {this.props.state.sponsor && `Total Contribution: $ ${this.props.state.currentUser.total_donations}.00`}
-          {this.props.state.sponsor == false && this.props.state.currentUser.id !== null && `Credit Earned: $ ${this.props.state.currentUser.credit}.00`}
+          {this.props.state.sponsor === false && this.props.state.currentUser.id !== null && `Credit Earned: $ ${this.props.state.currentUser.credit}.00`}
         </Navbar.Brand>
         <Navbar.Brand>
         {this.props.state.currentUser.email}

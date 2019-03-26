@@ -34,7 +34,7 @@ class NewEvent extends Component {
   }
 
   postNewEvent = () => {
-    fetch(`http://${window.location.hostname}:3000/events`, {
+    fetch(`${Const.ENDPOINT}events`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +54,7 @@ class NewEvent extends Component {
     .then(response => response.json())
     .then(json => {
       this.props.addEventToStore(json)
-      fetch(`http://${window.location.hostname}:3000/users/${json.coordinator_id}`)
+      fetch(`${Const.ENDPOINT}users/${json.coordinator_id}`)
       .then(response => response.json())
       .then(json => this.props.addEventsToUser(json))
     })

@@ -19,7 +19,7 @@ class LoginForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    fetch(`http://${window.location.hostname}:3000/${this.state.accountType}/login`,{
+    fetch(`${Const.ENDPOINT}${this.state.accountType}/login`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json",

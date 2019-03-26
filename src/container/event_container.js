@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Event from '../components/event.js'
-import { CardColumns, Alert } from 'react-bootstrap'
+import { CardColumns } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import NewEvent from '../components/newevent.js'
 import * as Const from '../const.js'
@@ -8,7 +8,7 @@ import * as Const from '../const.js'
 class EventContainer extends Component {
 
   componentDidMount() {
-    fetch(`http://${window.location.hostname}:3000/events`)
+    fetch(`${Const.ENDPOINT}events`)
     .then(reponse => reponse.json())
     .then(events => this.props.addEventsToStore(events))
   }

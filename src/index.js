@@ -7,37 +7,10 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import * as Const from './const.js'
 
-//change ID back to null
 
-const TESTSPONSOR = ({
-  "id": 1,
-  "first_name": "Bill",
-  "last_name": "Gates",
-  "credit": 1997010,
-  "total_donations": 2990,
-  "donations": [
-    {
-      "id": 1,
-      "event_id": 1,
-      "sponsor_id": 1,
-      "amount_per_volunteer": 100,
-      "sponsor_name": "Bill Gates"
-    },
-    {
-      "id": 4,
-      "event_id": 2,
-      "sponsor_id": 1,
-      "amount_per_volunteer": 55,
-      "sponsor_name": "Bill Gates"
-    }
-  ]
-})
-const TESTSTATE = {events: [], location: [40.715280, -73.954260], currentUser: TESTSPONSOR, userEvents: [], sponsor: true}
-
-const DEFAULTSTATE = {events: [], location: [40.715280, -73.954260], currentUser: {id: null, confirm_event_info: [], donations: []}, userEvents: [], sponsor: false}
-
-const reducer = (state = DEFAULTSTATE, action) => {
+const reducer = (state = Const.DEFAULTSTATE, action) => {
   switch(action.type) {
     case "ADD_EVENTS":
       return {...state, events: action.payload}
@@ -68,10 +41,10 @@ const reducer = (state = DEFAULTSTATE, action) => {
 
 const store = createStore(reducer)
 
-store.subscribe(() => {
-  console.log('the new state is', store.getState())
-  console.log('----------');
-})
+// store.subscribe(() => {
+//   console.log('the new state is', store.getState())
+//   console.log('----------');
+// })
 
 ReactDOM.render(
   <Provider store={store}>

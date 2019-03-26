@@ -16,7 +16,7 @@ class DonationModal extends Component {
   handleSubmit = () => {
     this.props.onHide()
     console.log(this.props.event.id, this.props.state.currentUser.id, this.state.donationAmount, "handle sub")
-    fetch(`http://${window.location.hostname}:3000/donations`, {
+    fetch(`${Const.ENDPOINT}donations`, {
       method: "POST",
       headers: {
         "Content-Type" : "application/json",

@@ -61,7 +61,7 @@ class App extends Component {
     const token = localStorage.getItem("user")
     const accountType = localStorage.getItem("accountType")
     if (token) {
-      fetch(`Const.ENDPOINT${accountType}/${token}`)
+      fetch(`${Const.ENDPOINT}${accountType}/${token}`)
       .then(response => response.json())
       .then( user => {
         this.props.addLoginAccountToStore(user)

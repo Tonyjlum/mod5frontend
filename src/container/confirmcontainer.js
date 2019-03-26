@@ -10,7 +10,7 @@ class ConfirmContainer extends PureComponent {
 
   //fetch for all confirms when mounting
   componentDidMount(){
-    fetch(`http://${window.location.hostname}:3000/events/${this.props.event.id}`)
+    fetch(`${Const.ENDPOINT}events/${this.props.event.id}`)
     .then(response => response.json())
     .then(current_event => {this.setState({
       confirms: current_event.confirms
@@ -45,7 +45,7 @@ class ConfirmContainer extends PureComponent {
       return c.id
     })
     console.log("from confirm submit", attended_id)
-    fetch(`http://${window.location.hostname}:3000/confirms/update_confirms`, {
+    fetch(`${Const.ENDPOINT}confirms/update_confirms`, {
       method: "PATCH",
       headers: {
         "Content-Type" : "application/json",

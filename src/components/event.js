@@ -51,7 +51,7 @@ class Event extends Component {
     this.setState({
       userButtonToggle: !this.state.userButtonToggle
     })
-    fetch(`http://${window.location.hostname}:3000/confirms`,{
+    fetch(`${Const.ENDPOINT}confirms`,{
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +64,7 @@ class Event extends Component {
     })
     .then(response => response.json())
     .then(confirm_event_info => this.props.addConfirms(confirm_event_info))
-    .then(fetch(`http://${window.location.hostname}:3000/events`)
+    .then(fetch(`${Const.ENDPOINT}events`)
       .then(response => response.json())
       .then (events => this.props.addEventsToStore(events))
     )

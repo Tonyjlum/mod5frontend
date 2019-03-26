@@ -19,7 +19,7 @@ class NewAccountFrom extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    fetch(`http://${window.location.hostname}:3000/${this.props.accountType}`,{
+    fetch(`${Const.ENDPOINT}${this.props.accountType}`,{
       method: 'POST',
       headers: {
         "Content-Type": "application/json",

@@ -1,7 +1,6 @@
 import React from 'react'
 import HomepageBottomContainer from '../container/homepagebottom.js'
 
-import {CardGroup, Card} from 'react-bootstrap'
 
 const Homepage = (props) => {
   return(
@@ -9,6 +8,7 @@ const Homepage = (props) => {
       <div className= "homepage-top">
         <img
           src="https://i.ibb.co/hDvg3YG/Untitled.png"
+          alt="Be the change you want to see in the world Plan it with Helping Hand and let the world know how they can help."
           width= "100%"
           position= "absolute"
           />
