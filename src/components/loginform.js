@@ -14,7 +14,7 @@ class LoginForm extends Component {
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
-    }, console.log(this.state))
+    })
   }
 
   handleSubmit = e => {
@@ -36,7 +36,6 @@ class LoginForm extends Component {
       localStorage.setItem("accountType", this.state.accountType)
       this.props.addLoginAccountToStore(account)
       this.props.history.push("/events")
-      console.log(this.state.accountType, "after login")
       if (this.state.accountType === "sponsors"){
         this.props.markSponsorInStore()
       }

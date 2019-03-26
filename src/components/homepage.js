@@ -1,5 +1,7 @@
 import React from 'react'
 import HomepageBottomContainer from '../container/homepagebottom.js'
+import GuestSponsorButton from './guestsponsorbutton.js'
+import GuestVolunteerButton from './guestvolunteerbutton.js'
 
 
 const Homepage = (props) => {
@@ -18,6 +20,8 @@ const Homepage = (props) => {
             in the world</h1>
             <br/>
             <h4>Plan it with Helping Hand and <br/> let the world know how they can help.</h4>
+            <GuestVolunteerButton />
+            <GuestSponsorButton />
           </div>
       </div>
       <HomepageBottomContainer className="homepage-bottom"/>
