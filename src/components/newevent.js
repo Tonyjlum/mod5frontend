@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button, Row, Col} from 'react-bootstrap'
 import { connect } from 'react-redux'
 import * as Const from '../const.js'
 
@@ -27,10 +27,19 @@ class NewEvent extends Component {
     e.preventDefault()
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.address}&key=AIzaSyA-kXyO4hu_HuTp2rb36ub5Adun3uY88n8`)
     .then(response => response.json())
-    .then(geolocation => this.setState({
-      lat: geolocation.results[0].geometry.location.lat,
-      long: geolocation.results[0].geometry.location.lng
-    }, () => this.postNewEvent()))
+    .then( geolocation => {
+      console.log(geolocation.status)
+      if (geolocation.status === "ZERO_RESULTS"){
+        return alert(`${this.state.address} is not a valid address. Please try a different address`)
+      } else {
+        const  position = {latitude: geolocation.results[0].geometry.location.lat, longitude: geolocation.results[0].geometry.location.lng }
+        this.props.addLocationToStore(position)
+        this.setState({
+          lat: geolocation.results[0].geometry.location.lat,
+          long: geolocation.results[0].geometry.location.lng
+        }, () => this.postNewEvent())
+      }
+    })
   }
 
   postNewEvent = () => {
@@ -58,7 +67,6 @@ class NewEvent extends Component {
       .then(response => response.json())
       .then(json => this.props.addEventsToUser(json))
     })
-    //add event and confirm to currentUser state
     .then(() => this.setState(RESETSTATE))
   }
 
@@ -153,7 +161,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   addEventToStore: (event) => ({type: "ADD_NEW_EVENT", payload: event}),
-  addEventsToUser:(user) =>({type:"ADD_LOGIN_ACCOUNT_TO_STORE", payload:user})
+  addEventsToUser:(user) =>({type:"ADD_LOGIN_ACCOUNT_TO_STORE", payload:user}),
+  addLocationToStore: (location) => ({type: "ADD_CURRENT_LOCATION", payload: location})
 }
 
 

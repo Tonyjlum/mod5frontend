@@ -11,11 +11,10 @@ class DonationModal extends Component {
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
-    }, () => {console.log(this.state)})
+    })
   }
   handleSubmit = () => {
     this.props.onHide()
-    console.log(this.props.event.id, this.props.state.currentUser.id, this.state.donationAmount, "handle sub")
     fetch(`${Const.ENDPOINT}donations`, {
       method: "POST",
       headers: {

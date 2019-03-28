@@ -54,7 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   addEventsToStore: (events) => ({type: "ADD_EVENTS", payload: events}),
-    addLocationToStore: (location) => ({type: "ADD_CURRENT_LOCATION", payload: location})
+  addLocationToStore: (location) => ({type: "ADD_CURRENT_LOCATION", payload: location})
 }
 
 

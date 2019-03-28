@@ -8,6 +8,7 @@ import NewUserContainer from './container/newusercontainer.js'
 import LoginForm from './components/loginform.js'
 import MyEventContainer from './container/myeventcontainer.js'
 import DonationContainer from './container/donationscontainer.js'
+import About from "./components/about.js"
 import { connect } from 'react-redux'
 import * as Const from './const.js'
 
@@ -17,32 +18,19 @@ import {BrowserRouter as Router, Route} from "react-router-dom"
 class App extends Component {
 
   renderHomepage = () => {
-    return (
-      <div>
-        <Homepage />
-      </div>
-    )
+    return <Homepage />
   }
   renderStatic = () => {
-    return (
-      <div>
-        <NavigationBar />
-      </div>
-    )
+    return <NavigationBar />
   }
 
   renderUserContainer = () => {
-    return (
-      <div>
-        <UserContainer />
-      </div>
-    )
+    return <UserContainer />
   }
 
   renderNewMemeber = () => {
-    return (
-      <NewUserContainer />
-    )
+    return <NewUserContainer />
+
   }
 
   renderLoginForm = () =>{
@@ -55,6 +43,9 @@ class App extends Component {
 
   renderMyDonationContainer = () => {
     return <DonationContainer />
+  }
+  renderAbout = () => {
+    return <About />
   }
 
   componentDidMount() {
@@ -85,6 +76,8 @@ class App extends Component {
           <Route exact path ="/login" component={this.renderLoginForm}/>
           <Route exact path = "/attending" component={this.renderMyEventContainer}/>
           <Route exact path = "/contribution" component={this.renderMyDonationContainer} />
+          <Route exact path = "/about" component={this.renderAbout} />
+
         </div>
       </Router>
     )

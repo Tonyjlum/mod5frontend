@@ -25,7 +25,6 @@ class ConfirmContainer extends PureComponent {
   }
 
   handleRadio = (id, value) => {
-    console.log(id, value)
     this.setState({
       confirms: this.state.confirms.map( c => {
         if (c.id === id){
@@ -34,7 +33,7 @@ class ConfirmContainer extends PureComponent {
           return c
         }
       })
-    }, () => console.log(this.state.confirms))
+    })
   }
 
   handleSubmit = (props) => {
@@ -44,7 +43,6 @@ class ConfirmContainer extends PureComponent {
     }).map( c => {
       return c.id
     })
-    console.log("from confirm submit", attended_id)
     fetch(`${Const.ENDPOINT}confirms/update_confirms`, {
       method: "PATCH",
       headers: {
@@ -53,8 +51,8 @@ class ConfirmContainer extends PureComponent {
       },
       body: JSON.stringify({attended_id})
     })
-    .then( response => response.json())
-    .then( attended_ids => console.log(attended_ids))
+    // .then( response => response.json())
+    // .then( attended_ids => console.log(attended_ids))
   }
 
 
@@ -75,10 +73,11 @@ class ConfirmContainer extends PureComponent {
           </Modal.Header>
           <Modal.Body>
             <Form>
+              <div id="confirm-users">
               {this.renderConfrims()}
+              </div>
             </Form>
           </Modal.Body>
-          {"this should render confirms"}
           <Modal.Footer>
             <Button onClick={this.props.onHide} >Close</Button>
             <Button onClick={this.handleSubmit} >Submit Confirms</Button>

@@ -42,6 +42,7 @@ class NavigationBar extends Component {
   }
 
   //make the nav bar load conditionally
+  // {<Nav.Link onClick = {() => this.props.history.push("/about")}>About</Nav.Link>}
 //replace href with onClick={() => this.props.history.push(end url)}
   render() {
     return (
@@ -55,7 +56,6 @@ class NavigationBar extends Component {
             this.props.state.sponsor ? (<Nav.Link onClick = {() => this.props.history.push("/contribution")}>My Contributions</Nav.Link>) :
             (this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/attending")}>My Events</Nav.Link>)}
 
-          {<Nav.Link onClick = {() => this.props.history.push("/about")}>About</Nav.Link>}
         </Nav>
         <Navbar.Brand >
           {this.props.state.sponsor && `Total Contribution: $ ${this.props.state.currentUser.total_donations}.00`}

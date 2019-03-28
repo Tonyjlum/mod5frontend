@@ -28,8 +28,6 @@ class GuestVolunteerButton extends Component {
       localStorage.setItem("accountType", "users")
       this.props.history.push("/events")
     })
-
-
   }
 
   render() {
@@ -38,7 +36,7 @@ class GuestVolunteerButton extends Component {
         onClick={this.handleClick}
         variant="info"
         size= "sm"
-      >Sponsor Test Account</Button>
+      >Volunteer Test Account</Button>
     );
   }
 }

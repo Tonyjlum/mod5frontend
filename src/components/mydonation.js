@@ -22,7 +22,6 @@ class MyDonation extends Component {
 
 
   render() {
-    console.log(this.state)
     return (
       <Card.Body className="my-donation-card">
         <Card className="text-center">
