@@ -28,11 +28,10 @@ class NewEvent extends Component {
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.address}&key=AIzaSyA-kXyO4hu_HuTp2rb36ub5Adun3uY88n8`)
     .then(response => response.json())
     .then( geolocation => {
-      console.log(geolocation.status)
       if (geolocation.status === "ZERO_RESULTS"){
         return alert(`${this.state.address} is not a valid address. Please try a different address`)
       } else {
-        const  position = {latitude: geolocation.results[0].geometry.location.lat, longitude: geolocation.results[0].geometry.location.lng }
+        const position = {latitude: geolocation.results[0].geometry.location.lat, longitude: geolocation.results[0].geometry.location.lng }
         this.props.addLocationToStore(position)
         this.setState({
           lat: geolocation.results[0].geometry.location.lat,
@@ -79,31 +78,31 @@ class NewEvent extends Component {
         onChange={this.handleChange}
         onSubmit={this.handleSubmit}>
         <Row>
-            <Col xs={5}>
-            <Form.Group controlId="title">
-              <Form.Label>Event Title:</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                value={this.state.title}
-                size="sm"/>
-              <Form.Text className="text-muted">
-              </Form.Text>
-            </Form.Group>
-            </Col>
-            <Col xs={7}>
-            <Form.Group controlId="discription">
-              <Form.Label>Discription: </Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="e.g. clean up the trash from Coney Island"
-                value={this.state.discription}
-                size="sm" />
-              <Form.Text className="text-muted">
-              </Form.Text>
-            </Form.Group>
-            </Col>
+          <Col xs={5}>
+          <Form.Group controlId="title">
+            <Form.Label>Event Title:</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              value={this.state.title}
+              size="sm"/>
+            <Form.Text className="text-muted">
+            </Form.Text>
+          </Form.Group>
+          </Col>
+          <Col xs={7}>
+          <Form.Group controlId="discription">
+            <Form.Label>Discription: </Form.Label>
+            <Form.Control
+              required
+              type="text"
+              placeholder="e.g. clean up Riegelmann Boardwalk at Coney Island"
+              value={this.state.discription}
+              size="sm" />
+            <Form.Text className="text-muted">
+            </Form.Text>
+          </Form.Group>
+          </Col>
         </Row>
         <Row>
           <Col xs={5}>
@@ -146,7 +145,7 @@ class NewEvent extends Component {
           </Form.Group>
           </Col>
         </Row>
-        <Button variant="primary" type="submit" className="btn-small">
+        <Button variant="primary" type="submit" size="sm">
           Plan the event!
         </Button>
       </Form>

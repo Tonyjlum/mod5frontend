@@ -25,7 +25,7 @@ class Event extends Component {
       if (already_attending) {
         return <strong>Attending</strong>
       } else {
-        return slot > 0 ? <Button disabled={this.state.userButtonToggle} onClick={() => {this.handleClick(this.props.event.id)}}> {`Join: ${slot} slots left`}</Button> : `This event is full`
+        return slot > 0 ? <Button disabled={this.state.userButtonToggle} onClick={() => {this.handleClick(this.props.event.id)}} size="sm"> {`Join: ${slot} slots left`}</Button> : `This event is full`
       }
   }
 
@@ -35,6 +35,7 @@ class Event extends Component {
 
     } else {
       return(<Button
+        size="sm"
         onClick={this.toggleSponsorButton}
       > Sponsor This Event</Button>)
 
