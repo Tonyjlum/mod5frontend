@@ -8,38 +8,47 @@ class LoginForm extends Component {
   state = {
     email: "",
     password: "",
-    accountType: "users",
+    accountType: "",
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
-    })
+    }, () => {console.log(this.state)})
   }
 
   handleSubmit = e => {
     e.preventDefault()
-    fetch(`${Const.ENDPOINT}${this.state.accountType}/login`,{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
+    if (this.state.accountType){
+      fetch(`${Const.ENDPOINT}${this.state.accountType}/login`,{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password
+        })
       })
-    })
-    .then(response => response.json())
-    .then(account => {
-      localStorage.setItem("user", account.id)
-      localStorage.setItem("accountType", this.state.accountType)
-      this.props.addLoginAccountToStore(account)
-      this.props.history.push("/events")
-      if (this.state.accountType === "sponsors"){
-        this.props.markSponsorInStore()
-      }
-    })
+      .then(response => response.json())
+      .then( account => {
+        if (account.id === 0) {
+          return alert("Invalid login.")
+        } else {
+          localStorage.setItem("user", account.id)
+          localStorage.setItem("accountType", this.state.accountType)
+          this.props.addLoginAccountToStore(account)
+          this.props.history.push("/events")
+          if (this.state.accountType === "sponsors"){
+            this.props.markSponsorInStore()
+          }
+        }
+      })
+    } else {
+      return alert("Please select the account type.")
+    }
+
   }
 
   render(){
@@ -67,7 +76,7 @@ class LoginForm extends Component {
       <div className="radio-button">
         <input type="radio" id="accountType" name="accountType" value="sponsors" /> Sponsor
         &nbsp;&nbsp;
-        <input type="radio" id="accountType" name="accountType" value="users" checked/> Volunteer
+        <input type="radio" id="accountType" name="accountType" value="users"/> Volunteer
 
       </div><br/><br/>
 

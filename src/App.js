@@ -48,21 +48,21 @@ class App extends Component {
     return <About />
   }
 
-  componentDidMount() {
-    const token = localStorage.getItem("user")
-    const accountType = localStorage.getItem("accountType")
-    if (token) {
-      fetch(`${Const.ENDPOINT}${accountType}/${token}`)
-      .then(response => response.json())
-      .then( user => {
-        this.props.addLoginAccountToStore(user)
-        if (accountType === "sponsors") {
-          this.props.markSponsorInStore()
-        }
-      })
-
-    }
-  }
+  // componentDidMount() {
+  //   const token = localStorage.getItem("user")
+  //   const accountType = localStorage.getItem("accountType")
+  //   if (token) {
+  //     fetch(`${Const.ENDPOINT}${accountType}/${token}`)
+  //     .then(response => response.json())
+  //     .then( user => {
+  //       this.props.addLoginAccountToStore(user)
+  //       if (accountType === "sponsors") {
+  //         this.props.markSponsorInStore()
+  //       }
+  //     })
+  //
+  //   }
+  // }
 
 
   render() {
@@ -77,7 +77,6 @@ class App extends Component {
           <Route exact path = "/attending" component={this.renderMyEventContainer}/>
           <Route exact path = "/contribution" component={this.renderMyDonationContainer} />
           <Route exact path = "/about" component={this.renderAbout} />
-
         </div>
       </Router>
     )
