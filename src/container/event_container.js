@@ -22,20 +22,27 @@ class EventContainer extends Component {
   renderEventCards = () => {
     return this.filteredEvents().map( event => {
       const total_donation = event.donations.map( e => e.amount_per_volunteer).reduce((a,b) => a + b, 0)
-      return <Event key={event.id} event={event} donation={total_donation} changeLocation={this.changeLocation}/>
-  })
+      return (
+        <Event
+          key={event.id}
+          event={event}
+          donation={total_donation}
+          changeLocation={this.changeLocation}
+        />
+      )
+    })
   }
 
   changeLocation = (event) => {
-  const position = {latitude: event.lat, longitude: event.long }
-  this.props.addLocationToStore(position)
+    const position = {latitude: event.lat, longitude: event.long}
+    this.props.addLocationToStore(position)
   }
 
   render() {
     return (
       <div className="event-container">
         <div className="form-container">
-          {!this.props.sponsor_logged_in && <NewEvent/>}
+          {!this.props.sponsor_logged_in && <NewEvent />}
         </div>
         <br/>
         <div className="event-cards-container">

@@ -12,13 +12,12 @@ class DonationContainer extends Component {
   render() {
 
     return (
-      <div>
+      <>
         <h1 className="center"> My Contributions</h1>
         {this.renderDonations()}
-      </div>
-    );
+      </>
+    )
   }
-
 }
 
 const mapStateToProps = (state) => {

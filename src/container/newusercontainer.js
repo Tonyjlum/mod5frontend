@@ -17,22 +17,18 @@ class NewUserContainer extends Component {
     })
   }
 
-
   render() {
     return (
-        <Row className="justify-content-md-center" >
-          <Col xs lg="5" className="center">
-          {this.state.showButton && <Button onClick={()=>{this.handlebuttonselect("users")}}>I want to help as a Volunteer</Button>}
-          <br/>
-          <br/>
-          {this.state.showButton && <Button onClick={()=>{this.handlebuttonselect("sponsors")}}>I want to help by becoming a Sponsor</Button>}
-          {this.state.showForm && <NewAccountFrom accountType={this.state.accountType}/>}
-          </Col>
-        </Row>
-
-    );
+      <Row className="justify-content-md-center" >
+        <Col xs lg="5" className="center">
+        {this.state.showButton && <Button onClick={()=>{this.handlebuttonselect("users")}}>I want to help as a Volunteer</Button>}
+        <br /><br />
+        {this.state.showButton && <Button onClick={()=>{this.handlebuttonselect("sponsors")}}>I want to help by becoming a Sponsor</Button>}
+        {this.state.showForm && <NewAccountFrom accountType={this.state.accountType} />}
+        </Col>
+      </Row>
+    )
   }
-
 }
 
-export default NewUserContainer ;
+export default NewUserContainer

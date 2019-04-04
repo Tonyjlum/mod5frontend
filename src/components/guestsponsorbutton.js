@@ -31,13 +31,7 @@ class GuestSponsorButton extends Component {
   }
 
   render() {
-    return (
-      <Button
-        onClick={this.handleClick}
-        variant="info"
-        size= "sm"
-      >Sponsor Test Account</Button>
-    );
+    return <Button onClick={this.handleClick} variant="info" size= "sm">Sponsor Test Account</Button>
   }
 }
 

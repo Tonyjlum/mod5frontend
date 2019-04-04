@@ -22,19 +22,19 @@ class MyEvent extends Component {
 
   renderButtonsofPassEvents = (props) => {
     if (props.event.coordinator_id === props.currentUser){
-      return (<Button
-        variant="outline-success"
-        size="sm"
-        onClick={() => this.setState({ confirmContainerModalShow: true })}
-        >Confirm Volunteers</Button>)
+      return (
+        <Button
+          variant="outline-success"
+          size="sm"
+          onClick={() => this.setState({ confirmContainerModalShow: true })}
+        >
+          Confirm Volunteers
+        </Button>)
     } else {
       const attendance = props.confirm.attend ? "Thank you for Volunteering": ""
-      return (<Card.Text>
-        {`Event Completed. ${attendance}`}
-      </Card.Text>)
+      return (<Card.Text>{`Event Completed. ${attendance}`}</Card.Text>)
     }
   }
-
 
   renderButtonsofUpcomingEvents = (props) => {
     if (props.event.coordinator_id === props.currentUser){
@@ -44,20 +44,28 @@ class MyEvent extends Component {
             variant="outline-secondary"
             size="sm"
             onClick={() => this.setState({ editModalShow: true })}
-            >Edit Event</Button>
+          >
+            Edit Event
+          </Button>
           <Button
             variant="outline-danger"
             size="sm"
             onClick = {() => {this.handleDelete(props.event.id, props.confirm)}}
-            >Delete Event</Button>
+          >
+            Delete Event
+          </Button>
         </div>
       )
     } else {
-      return (<Button
+      return (
+        <Button
         variant="outline-danger"
         size="sm"
         onClick={()=>{this.handleLeave(props.confirm)}}
-        >Leave Event</Button>)
+        >
+          Leave Event
+        </Button>
+      )
     }
   }
 
@@ -67,7 +75,7 @@ class MyEvent extends Component {
     })
     .then( response => response.json() )
     .then( json => this.filterDeletedConfirm(json) )
-    .then( filteredConfirms => this.props.updateConfirms(filteredConfirms) )
+    .then( filteredConfirms => this.props.updateConfirms(filteredConfirms))
   }
 
   handleDelete = (event_id, confirm) => {
@@ -106,7 +114,7 @@ class MyEvent extends Component {
 
   render(){
     return (
-      <div>
+      <>
         <Card.Body className="my-event-card">
           <Card className="text-center">
             <Row className="justify-content-md-center">
@@ -114,29 +122,37 @@ class MyEvent extends Component {
                 <Card.Body>
                   <Card.Title>{this.props.event.title}</Card.Title>
                   <Card.Text>
-                    <Moment locale="en" format="MMMM DD, YYYY" date={this.props.event.datetime}/>
+                    <Moment
+                      locale="en"
+                      format="MMMM DD, YYYY"
+                      date={this.props.event.datetime}
+                    />
                     &nbsp;at&nbsp;
-                    <Moment locale="en"format="LT" date={this.props.event.datetime}/>
+                    <Moment
+                      locale="en"
+                      format="LT"
+                      date={this.props.event.datetime}
+                    />
                   </Card.Text>
-
-                  <Card.Text>
-                    {this.props.event.description}
-                  </Card.Text>
+                  <Card.Text>{this.props.event.description}</Card.Text>
                 </Card.Body>
                 {this.renderButtons(this.props)}
-                </Col>
-              </Row>
+              </Col>
+            </Row>
           </Card>
         </Card.Body>
-        <EditModal show={this.state.editModalShow} onHide={this.toggleEditModal} event={this.props.event}/>
-
+        <EditModal
+          show={this.state.editModalShow}
+          onHide={this.toggleEditModal}
+          event={this.props.event}
+        />
         <ConfirmContainer
           show={this.state.confirmContainerModalShow}
           onHide={this.toggleConfrimModal}
           event={this.props.event}
           confirms={this.props.confirm}
-          />
-      </div>
+        />
+      </>
     )
   }
 }

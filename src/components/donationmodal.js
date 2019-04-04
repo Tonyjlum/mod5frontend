@@ -63,11 +63,9 @@ class DonationModal extends Component {
           <Modal.Title id="contained-modal-title-vcenter">
           {this.props.event.title}
           </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            {this.props.event.description}
-          </Modal.Body>
-          <Modal.Body>
+        </Modal.Header>
+        <Modal.Body>{this.props.event.description}</Modal.Body>
+        <Modal.Body>
           <Form onChange={this.handleChange} >
             <Form.Group controlId="donationAmount">
               <Form.Label>Your Contribution</Form.Label>
@@ -76,19 +74,15 @@ class DonationModal extends Component {
                 defaultValue={this.state.donationAmount}
                 min = "5"
                 max = "200"
-                />
-              <Form.Text className="text-muted" >
-              </Form.Text>
+              />
+            <Form.Text className="text-muted" ></Form.Text>
           </Form.Group>
           </Form>
-
-          </Modal.Body>
-
-          <Modal.Footer>
-            <Button onClick={this.props.onHide} >Close</Button>
-            <Button onClick={this.handleSubmit} >Sponsor Event</Button>
-
-          </Modal.Footer>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={this.props.onHide} >Close</Button>
+          <Button onClick={this.handleSubmit} >Sponsor Event</Button>
+        </Modal.Footer>
       </Modal>
     );
   }

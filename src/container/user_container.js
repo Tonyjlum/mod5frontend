@@ -8,8 +8,8 @@ class UserContainer extends Component {
   render() {
     return (
       <div className= "user-container">
-        <MapDisplay className="map-display"/>
-        <EventContainer className="event-container"/>
+        <MapDisplay className="map-display" />
+        <EventContainer className="event-container" />
       </div>
     );
   }

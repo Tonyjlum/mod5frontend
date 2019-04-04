@@ -49,7 +49,7 @@ class NewAccountFrom extends Component {
       >
       <Col xs lg="12">
       <h1>Welcome to Helping Hand</h1>
-      <br/><br/>
+      <br /><br />
       <Form.Group controlId="first_name">
         <Form.Label>First Name:</Form.Label>
         <Form.Control type="text" value={this.state.first_name} />
@@ -64,7 +64,11 @@ class NewAccountFrom extends Component {
       </Form.Group>
       <Form.Group controlId="email">
         <Form.Label>Email:</Form.Label>
-        <Form.Control type="text" placeholder="yourname@example.com" value={this.state.email} />
+        <Form.Control
+          type="text"
+          placeholder="yourname@example.com"
+          value={this.state.email}
+        />
         <Form.Text className="text-muted">
         </Form.Text>
       </Form.Group>

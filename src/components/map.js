@@ -9,7 +9,8 @@ class MapDisplay extends Component {
 
   componentDidMount(){
     navigator.geolocation.getCurrentPosition( position => {
-      this.props.addLocationToStore(position.coords)})
+      this.props.addLocationToStore(position.coords)
+    })
   }
 
   filteredEvents = () => {
@@ -42,7 +43,8 @@ class MapDisplay extends Component {
         animate={true}
         style={{height: '93vh', width: '100%' }}
         center={this.props.location}
-        zoom={14}>
+        zoom={14}
+      >
         <TileLayer
           url="https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png"
         />

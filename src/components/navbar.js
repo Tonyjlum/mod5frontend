@@ -12,32 +12,27 @@ class NavigationBar extends Component {
         <div className="space-button">
         <Button
           onClick = {() => this.props.history.push("/newmember")}
-          variant="outline-info"
-        >
-          Become a Member
-        </Button>
+          variant="outline-info">
+          Become a Member</Button>
         <Button
           onClick = {() => this.props.history.push("/login")}
-          variant="outline-info"
-        > Sign in
-        </Button>
+          variant="outline-info"> Sign in</Button>
         </div>
       )
     } else {
       return(
-
         <div className="log-out-button">
-      <Button
-        onClick = {() => {
-          this.props.history.push("/")
-          this.props.removeCurrentUser()
-          localStorage.removeItem("user")
-        }}
-        variant="outline-info"
-      > Sign out
-      </Button>
-      </div>
-    )
+          <Button
+            onClick = {() => {
+              this.props.history.push("/")
+              this.props.removeCurrentUser()
+              localStorage.removeItem("user")
+            }}
+            variant="outline-info"
+          > Sign out
+          </Button>
+        </div>
+      )
     }
   }
 
@@ -48,15 +43,15 @@ class NavigationBar extends Component {
         HelpingHand</Navbar.Brand>
         <Nav className="mr-auto">
           {this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/events")}>How Can I Help?</Nav.Link>}
-
-          {
-            this.props.state.sponsor ? (<Nav.Link onClick = {() => this.props.history.push("/contribution")}>My Contributions</Nav.Link>) :
+          {this.props.state.sponsor ?
+            (<Nav.Link onClick = {() => this.props.history.push("/contribution")}>My Contributions</Nav.Link>) :
             (this.props.state.currentUser.id && <Nav.Link onClick = {() => this.props.history.push("/attending")}>My Events</Nav.Link>)}
-
         </Nav>
         <Navbar.Brand >
           {this.props.state.sponsor && `Total Contribution: $ ${this.props.state.currentUser.total_donations}.00`}
-          {this.props.state.sponsor === false && this.props.state.currentUser.id !== null && `Credit Earned: $ ${this.props.state.currentUser.credit}.00`}
+          {this.props.state.sponsor === false &&
+            this.props.state.currentUser.id !== null &&
+            `Credit Earned: $ ${this.props.state.currentUser.credit}.00`}
         </Navbar.Brand>
         <Navbar.Brand>
         {this.props.state.currentUser.email}

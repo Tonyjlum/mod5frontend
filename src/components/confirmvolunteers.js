@@ -22,7 +22,7 @@ const ConfirmVolunteer = (props) => {
       checked={props.confirm.attend ? null : "checked"}
       /> Did not attend
     </div>
-    <hr/>
+    <hr />
     </div>
   )
 }

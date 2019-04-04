@@ -31,13 +31,7 @@ class GuestVolunteerButton extends Component {
   }
 
   render() {
-    return (
-      <Button
-        onClick={this.handleClick}
-        variant="info"
-        size= "sm"
-      >Volunteer Test Account</Button>
-    );
+    return <Button onClick={this.handleClick} variant="info" size= "sm">Volunteer Test Account</Button>
   }
 }
 

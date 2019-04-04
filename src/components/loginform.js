@@ -56,38 +56,50 @@ class LoginForm extends Component {
       <Form
         onChange={this.handleChange}
         onSubmit={this.handleSubmit}
-        className="justify-content-md-center "
+        className="justify-content-md-center"
       >
-      <Col xs lg="6">
-      <h1 align= "center">Welcome to Helping Hand</h1>
-      <br/><br/>
-      <Form.Group controlId="email">
-        <Form.Label>Email:</Form.Label>
-        <Form.Control type="text" value={this.state.email} />
-        <Form.Text className="text-muted">
-        </Form.Text>
-      </Form.Group>
-      <Form.Group controlId="password">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" value={this.state.password} />
-        <Form.Text className="text-muted">
-        </Form.Text>
-      </Form.Group>
-      <div className="radio-button">
-        <input type="radio" id="accountType" name="accountType" value="sponsors" /> Sponsor
-        &nbsp;&nbsp;
-        <input type="radio" id="accountType" name="accountType" value="users"/> Volunteer
-
-      </div><br/><br/>
-
-      <Button variant="primary" type="submit" >
-        Login
-      </Button>
-      </Col>
+        <Col xs lg="6">
+          <h1 align= "center">Welcome to Helping Hand</h1>
+          <br /><br />
+          <Form.Group controlId="email">
+            <Form.Label>Email:</Form.Label>
+            <Form.Control type="text" value={this.state.email} />
+            <Form.Text className="text-muted">
+            </Form.Text>
+          </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Label>Password:</Form.Label>
+            <Form.Control type="password" value={this.state.password} />
+            <Form.Text className="text-muted">
+            </Form.Text>
+          </Form.Group>
+          <div className="radio-button">
+            <input
+              type="radio"
+              id="accountType"
+              name="accountType"
+              value="sponsors"
+            />
+              Sponsor
+              &nbsp;&nbsp;
+            <input
+              type="radio"
+              id="accountType"
+              name="accountType"
+              value="users"
+            />
+              Volunteer
+          </div><br /><br />
+          <Button
+            variant="primary"
+            type="submit"
+          >
+            Login
+          </Button>
+        </Col>
       </Form>
     )
   }
-
 }
 const mapDispatchToProps = {
   addLoginAccountToStore: (account) => ({type: "ADD_LOGIN_ACCOUNT_TO_STORE", payload: account}),

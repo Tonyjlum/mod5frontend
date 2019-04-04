@@ -14,15 +14,14 @@ const Homepage = () => {
           width= "100%"
           position= "absolute"
           />
-          <div className="landing-text">
-            <h1>Be the change <br/>you want to see in the world</h1>
-            <br/>
-            <h4>Plan it with Helping Hand and <br/> let the world know how they can help.</h4>
-            <GuestVolunteerButton />
-            <GuestSponsorButton />
-          </div>
+        <div className="landing-text">
+          <h1>Be the change <br />you want to see in the world</h1><br />
+          <h4>Plan it with Helping Hand and <br /> let the world know how they can help.</h4>
+          <GuestVolunteerButton />
+          <GuestSponsorButton />
+        </div>
       </div>
-      <HomepageBottomContainer className="homepage-bottom"/>
+      <HomepageBottomContainer className="homepage-bottom" />
     </>
   )
 }

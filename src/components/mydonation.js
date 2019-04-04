@@ -19,8 +19,6 @@ class MyDonation extends Component {
     }
   }
 
-
-
   render() {
     return (
       <Card.Body className="my-donation-card">
@@ -28,30 +26,22 @@ class MyDonation extends Component {
           <Row className="justify-content-md-center">
             <Col xs={7} className>
               <Card.Body>
-                <Card.Title>
-                  {this.props.donation.event_title}
-                </Card.Title>
+                <Card.Title>{this.props.donation.event_title}</Card.Title>
                 <Card.Text>
-                  {this.props.donation.event_description}
-                  <br/>
-                  {`Contribution per volunteer: $${this.props.donation.amount_per_volunteer}.00`}
-                  <br/>
+                  {this.props.donation.event_description}<br />
+                  {`Contribution per volunteer: $${this.props.donation.amount_per_volunteer}.00`}<br />
                   {this.numberOfVolunteer()}
                 </Card.Text>
               </Card.Body>
               <Card.Body>
-              <Card.Text>
-                {this.volunteerCount()}
-              </Card.Text>
+              <Card.Text>{this.volunteerCount()}</Card.Text>
               </Card.Body>
-
-              </Col>
-            </Row>
+            </Col>
+          </Row>
         </Card>
       </Card.Body>
-    );
+    )
   }
-
 }
 
 export default MyDonation;

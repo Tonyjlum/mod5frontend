@@ -19,17 +19,23 @@ class ConfirmContainer extends PureComponent {
 
   renderConfrims = () => {
     return (this.state.confirms.map( confirm => {
-      return <ConfirmVolunteer key={confirm.id} confirm={confirm} handleRadio={this.handleRadio}/>
+      return(
+      <ConfirmVolunteer
+        key={confirm.id}
+        confirm={confirm}
+        handleRadio={this.handleRadio}
+      />
+      )
     }))
   }
 
   handleRadio = (id, value) => {
     this.setState({
-      confirms: this.state.confirms.map( c => {
-        if (c.id === id){
-          return {...c, attend: (value === "true" ? true : false)}
+      confirms: this.state.confirms.map( confirm => {
+        if (confirm.id === id){
+          return {...confirm, attend: (value === "true" ? true : false)}
         } else {
-          return c
+          return confirm
         }
       })
     })
@@ -37,10 +43,10 @@ class ConfirmContainer extends PureComponent {
 
   handleSubmit = (props) => {
     this.props.onHide()
-    const attended_id = this.state.confirms.filter( c => {
-      return c.attend
-    }).map( c => {
-      return c.id
+    const attended_id = this.state.confirms.filter( confirm => {
+      return confirm.attend
+    }).map( confirm => {
+      return confirm.id
     })
     fetch(`${Const.ENDPOINT}confirms/update_confirms`, {
       method: "PATCH",
@@ -66,26 +72,23 @@ class ConfirmContainer extends PureComponent {
       >
         <Modal.Header >
           <Modal.Title id="contained-modal-title-vcenter">
-          {this.props.event.title}
+            {this.props.event.title}
           </Modal.Title>
-
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <div id="confirm-users">
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <div id="confirm-users">
               {this.renderConfrims()}
-              </div>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.props.onHide} >Close</Button>
-            <Button onClick={this.handleSubmit} >Submit Confirms</Button>
-
-          </Modal.Footer>
+            </div>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={this.props.onHide} >Close</Button>
+          <Button onClick={this.handleSubmit} >Submit Confirms</Button>
+        </Modal.Footer>
       </Modal>
-    );
+    )
   }
-
 }
 
 export default ConfirmContainer;

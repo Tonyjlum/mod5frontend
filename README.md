@@ -37,7 +37,7 @@ The homepage details the purpose of the app as well as allow visitors to login w
 ![homepageimg](./assets/images/homepageimg.png)
 
 #### User
-The user page is the primary interaction that volunteers and sponsors will be using. It contains the the leaflet map, creating a new event, sponsoring events, and view all upcoming events. This container will function dynamically based on which type of account is signed in.
+The user page is the primary interaction that volunteers and sponsors will be using. It contains the the leaflet map, creating a new event, sponsoring events, and view all upcoming events. This container will function dynamically based on which type of account is signed in. If location tracking is allowed, the map will center on the users locations. Other wise it will center to downtown Manhattan. When a event is clicked, the map will center over the event. Events will have a blue ring if they have been sponsored and a red ring if it has yet to be sponsored.
 - donationmodal.js, event.js, map.js, newevent.js, event_container.js, and user_container.js
 
 ![homepageimg](./assets/images/userimg.png)
@@ -66,20 +66,23 @@ The login and new account pages allows users to login to their account or create
 
 ![homepageimg](./assets/images/newaccountimg.png) -->
 
-<img src="./assets/images/loginimg.png" alt="login" width="500px"/>
+<img src="./assets/images/loginimg.png" alt="login" width="500px" />
 
-<img src="./assets/images/newaccountimg.png" alt="new-account" width="500px"/>
+<img src="./assets/images/newaccountimg.png" alt="new-account" width="500px" />
 
 
 ## Future Development
 At the moment, events have full CRUD functionality and users have basic account management. There are a few additions and edits I would like to see in the app:
   - Mass email system to let volunteers and sponsors know about any updates to the event.
+  - Leave reviews for the coordinator of the event, the volunteers who attend the event, and the event itself.
+
   - Volunteers:
-    - adding the ability to donate the amount they have earned to a charity of their choice
+    - adding the functionality to donate the amount they have earned to a charity of their choice.
     - search and filter out upcoming events and the events they are attending
     - watch an event and receive an alert if they become sponsored.
   - Sponsors
     - see a list of locations and how much of a contribution they have made to a particular charity.
+    - add a method for adding funds to their account or link to a banking account.
     - print out a statement to use as 1099 tax deduction.
 
 ## Contact

@@ -20,6 +20,7 @@ class App extends Component {
   renderHomepage = () => {
     return <Homepage />
   }
+
   renderStatic = () => {
     return <NavigationBar />
   }
@@ -44,6 +45,7 @@ class App extends Component {
   renderMyDonationContainer = () => {
     return <DonationContainer />
   }
+
   renderAbout = () => {
     return <About />
   }
@@ -62,7 +64,7 @@ class App extends Component {
       })
 
     } else {
-      //helps wake up Heroku server
+      //helps wake up Heroku server =D
       fetch(`${Const.ENDPOINT}`)
     }
   }
@@ -71,16 +73,16 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <Route path="/" component={this.renderStatic}/>
-          <Route exact path="/" component={this.renderHomepage}/>
-          <Route exact path="/events" component={this.renderUserContainer}/>
-          <Route exact path="/newmember" component={this.renderNewMemeber}/>
-          <Route exact path ="/login" component={this.renderLoginForm}/>
-          <Route exact path = "/attending" component={this.renderMyEventContainer}/>
+        <>
+          <Route path="/" component={this.renderStatic} />
+          <Route exact path="/" component={this.renderHomepage} />
+          <Route exact path="/events" component={this.renderUserContainer} />
+          <Route exact path="/newmember" component={this.renderNewMemeber} />
+          <Route exact path ="/login" component={this.renderLoginForm} />
+          <Route exact path = "/attending" component={this.renderMyEventContainer} />
           <Route exact path = "/contribution" component={this.renderMyDonationContainer} />
           <Route exact path = "/about" component={this.renderAbout} />
-        </div>
+        </>
       </Router>
     )
   }

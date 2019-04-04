@@ -22,16 +22,18 @@ class NewEvent extends Component {
     })
   }
 
-
   handleSubmit = (e) => {
     e.preventDefault()
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.address}&key=AIzaSyA-kXyO4hu_HuTp2rb36ub5Adun3uY88n8`)
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.address}&key=${Const.GEOAPI}`)
     .then(response => response.json())
     .then( geolocation => {
       if (geolocation.status === "ZERO_RESULTS"){
         return alert(`${this.state.address} is not a valid address. Please try a different address`)
       } else {
-        const position = {latitude: geolocation.results[0].geometry.location.lat, longitude: geolocation.results[0].geometry.location.lng }
+        const position = {
+          latitude: geolocation.results[0].geometry.location.lat,
+          longitude: geolocation.results[0].geometry.location.lng
+        }
         this.props.addLocationToStore(position)
         this.setState({
           lat: geolocation.results[0].geometry.location.lat,
@@ -69,9 +71,7 @@ class NewEvent extends Component {
     .then(() => this.setState(RESETSTATE))
   }
 
-
   render() {
-
     return (
       <Form
         className= "new-event-form"
@@ -85,7 +85,8 @@ class NewEvent extends Component {
               required
               type="text"
               value={this.state.title}
-              size="sm"/>
+              size="sm"
+            />
             <Form.Text className="text-muted">
             </Form.Text>
           </Form.Group>
@@ -98,7 +99,8 @@ class NewEvent extends Component {
               type="text"
               placeholder="e.g. clean up Riegelmann Boardwalk at Coney Island"
               value={this.state.discription}
-              size="sm" />
+              size="sm"
+            />
             <Form.Text className="text-muted">
             </Form.Text>
           </Form.Group>
@@ -113,7 +115,7 @@ class NewEvent extends Component {
               type="text"
               value={this.state.address}
               size="sm"
-               />
+            />
             <Form.Text className="text-muted">
             </Form.Text>
           </Form.Group>
@@ -126,7 +128,7 @@ class NewEvent extends Component {
               type="number"
               value={this.state.max_volunteers}
               size="sm"
-               />
+            />
             <Form.Text className="text-muted">
             </Form.Text>
           </Form.Group>
@@ -139,7 +141,7 @@ class NewEvent extends Component {
               type="datetime-local"
               value={this.state.datetime.slice(0,16)}
               size="sm"
-               />
+            />
             <Form.Text className="text-muted">
             </Form.Text>
           </Form.Group>
@@ -149,9 +151,8 @@ class NewEvent extends Component {
           Plan the event!
         </Button>
       </Form>
-    );
+    )
   }
-
 }
 
 const mapStateToProps = (state) => {
