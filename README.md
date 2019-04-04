@@ -3,7 +3,6 @@
 
 HelpingHand is full-stacked web application for bringing volunteers and philanthropists together to support their communities with their resources. It allows users to plan events to solve problems they see in their community (e.g. the Boardwalk at Coney Island could use some help cleaning up prior to the beach opening). It allows sponsors to fund these events to entice individuals to come volunteer and also ensures that the event is successful. The volunteers do not earn the money for themselves, but they are able earn a credit to donate to a cause of their choice. For both volunteer and sponsor, a single action, whether it is volunteering or sponsoring, will leads to multiple benefits. A volunteer can help their community and donate to a charity that may only accept monetary aid. A Sponsor can ensures that the community event that need human resources can be successful as well as see all of the charities where their contributions ultimately end up. The app it built on the React.JS library with React Router, Leaflet, Redux architectural framework and styled with React Bootstrap.
 
-
 ## Contents
 
 - [Getting Started](#getting-started)
@@ -17,7 +16,7 @@ HelpingHand is full-stacked web application for bringing volunteers and philanth
 - [Future Development](#future-development)
 
 ## Getting Started
-To install all of the apps dependencies, use: `npm install`. The API github repo can be found at https://github.com/Tonyjlum/mod5api. The default API link is to a live database on Heroku, but can be changed in ENDPOINT variable in src/const.js .
+To install the apps dependencies, use: `npm install`. The API github repo can be found at https://github.com/Tonyjlum/mod5api. The default API link is to a live database on Heroku, but can be changed in ENDPOINT variable in ./src/const.js .
 
 In the project directory, you can run: `npm start`.
 Open [http://${window.location.hostname}:3000](http://${window.location.hostname}:3000) to view it in the browser.
@@ -32,13 +31,13 @@ The top-level folder includes the public folder, which contains the index.html w
 ## Containers and Components
 The app has a few major sections (primary components and containers are listed):
 #### Homepage
-The **homepage** details the purpose of the app as well as allow visitors to login with a guest account for both volunteer and sponsor.
+The homepage details the purpose of the app as well as allow visitors to login with a guest account for both volunteer and sponsor.
 - homepage.js and homepagebottom.js
 
 ![homepageimg](./assets/images/homepageimg.png)
 
 #### User
-The **user** page is the primary interaction that volunteers and sponsors will be using. It contains the the leaflet map, creating a new event, sponsoring events, and view all upcoming events. This container will function dynamically based on which type of account is signed in.
+The user page is the primary interaction that volunteers and sponsors will be using. It contains the the leaflet map, creating a new event, sponsoring events, and view all upcoming events. This container will function dynamically based on which type of account is signed in.
 - donationmodal.js, event.js, map.js, newevent.js, event_container.js, and user_container.js
 
 ![homepageimg](./assets/images/userimg.png)
@@ -46,7 +45,7 @@ The **user** page is the primary interaction that volunteers and sponsors will b
 ![homepageimg](./assets/images/sponsorimg.png)
 
 #### Volunteer's Events
-The **events** page for volunteers show all of their events as well as handle the confirmations of their past events where they were the coordinator.
+The events page for volunteers show all of their events as well as handle the confirmations of their past events where they were the coordinator.
   - confirmvolunteers.js and  myeventcontainer.js
 
 ![homepageimg](./assets/images/events.png)
@@ -54,13 +53,13 @@ The **events** page for volunteers show all of their events as well as handle th
 ![homepageimg](./assets/images/confirmvolunteer02.png)
 
 #### Sponsor's Donations
-The **donations** page for sponsors show all of their contributions to the events they are supporting.
+The donations page for sponsors show all of their contributions to the events they are supporting.
   - donationscontainer.js
 
 ![homepageimg](./assets/images/contributions.png)
 
 #### Signup & Login
-The **login** and **new account** pages allows users to login to their account or create a new account. The login page has a account type selector through radio buttons.
+The login and new account pages allows users to login to their account or create a new account. The login page has a account type selector through radio buttons.
  - loginform.js and newaccountform.js
 
 <!-- ![homepageimg](./assets/images/loginimg.png)
@@ -84,6 +83,6 @@ At the moment, events have full CRUD functionality and users have basic account 
     - print out a statement to use as 1099 tax deduction.
 
 ## Contact
-Feel free to each out for any reason
+Feel free to reach out for any reason
   - Tonyjlum@gmail.com
-  - [Linkeden](https://www.linkedin.com/in/tony-lum/)
+  - [Linkedin](https://www.linkedin.com/in/tony-lum/)
