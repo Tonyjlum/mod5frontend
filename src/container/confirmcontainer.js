@@ -8,7 +8,6 @@ class ConfirmContainer extends PureComponent {
     confirms: []
   }
 
-  //fetch for all confirms when mounting
   componentDidMount(){
     fetch(`${Const.ENDPOINT}events/${this.props.event.id}`)
     .then(response => response.json())

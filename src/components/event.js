@@ -6,11 +6,9 @@ import DonationModal from './donationmodal.js'
 import * as Const from '../const.js'
 
 class Event extends Component {
-  //save a state for the slot count and cut it off at 0
   state = {
     userButtonToggle: false,
     sponsorButtonToggle: false
-
   }
 
   fundedColor = () => {
@@ -22,11 +20,11 @@ class Event extends Component {
     const already_attending =
       this.props.event.confirms.map(c => c.user_id).includes(this.props.state.currentUser.id)
 
-      if (already_attending) {
-        return <strong>Attending</strong>
-      } else {
-        return slot > 0 ? <Button disabled={this.state.userButtonToggle} onClick={() => {this.handleClick(this.props.event.id)}} size="sm"> {`Join: ${slot} slots left`}</Button> : `This event is full`
-      }
+    if (already_attending) {
+      return <strong>Attending</strong>
+    } else {
+      return slot > 0 ? <Button disabled={this.state.userButtonToggle} onClick={() => {this.handleClick(this.props.event.id)}} size="sm"> {`Join: ${slot} slots left`}</Button> : `This event is full`
+    }
   }
 
   sponsorButton = () => {
@@ -34,11 +32,9 @@ class Event extends Component {
     if (sponsor_ids.includes(this.props.state.currentUser.id)){
 
     } else {
-      return(<Button
-        size="sm"
-        onClick={this.toggleSponsorButton}
-      > Sponsor This Event</Button>)
-
+      return(
+        <Button size="sm" onClick={this.toggleSponsorButton}> Sponsor This Event</Button>
+      )
     }
   }
 
@@ -69,7 +65,6 @@ class Event extends Component {
       .then(response => response.json())
       .then (events => this.props.addEventsToStore(events))
     )
-    //do a filter return for the events to froce rerender, confirm_event_info has evens, look for it and send it back.
   }
 
   sponsorCount = () => {

@@ -41,9 +41,6 @@ class NavigationBar extends Component {
     }
   }
 
-  //make the nav bar load conditionally
-  // {<Nav.Link onClick = {() => this.props.history.push("/about")}>About</Nav.Link>}
-//replace href with onClick={() => this.props.history.push(end url)}
   render() {
     return (
       <Navbar bg="dark" variant="dark" >

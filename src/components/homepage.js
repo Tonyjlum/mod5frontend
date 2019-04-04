@@ -15,9 +15,7 @@ const Homepage = () => {
           position= "absolute"
           />
           <div className="landing-text">
-            <h1>Be the change <br/>
-            you want to see
-            in the world</h1>
+            <h1>Be the change <br/>you want to see in the world</h1>
             <br/>
             <h4>Plan it with Helping Hand and <br/> let the world know how they can help.</h4>
             <GuestVolunteerButton />

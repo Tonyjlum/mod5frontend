@@ -14,7 +14,7 @@ class NewUserContainer extends Component {
       showButton: !this.state.showButton,
       showForm: !this.state.showForm,
       accountType: selection
-    }, () => console.log(this.state))
+    })
   }
 
 

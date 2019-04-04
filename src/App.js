@@ -48,21 +48,24 @@ class App extends Component {
     return <About />
   }
 
-  // componentDidMount() {
-  //   const token = localStorage.getItem("user")
-  //   const accountType = localStorage.getItem("accountType")
-  //   if (token) {
-  //     fetch(`${Const.ENDPOINT}${accountType}/${token}`)
-  //     .then(response => response.json())
-  //     .then( user => {
-  //       this.props.addLoginAccountToStore(user)
-  //       if (accountType === "sponsors") {
-  //         this.props.markSponsorInStore()
-  //       }
-  //     })
-  //
-  //   }
-  // }
+  componentDidMount() {
+    const token = localStorage.getItem("user")
+    const accountType = localStorage.getItem("accountType")
+    if (token) {
+      fetch(`${Const.ENDPOINT}${accountType}/${token}`)
+      .then(response => response.json())
+      .then( user => {
+        this.props.addLoginAccountToStore(user)
+        if (accountType === "sponsors") {
+          this.props.markSponsorInStore()
+        }
+      })
+
+    } else {
+      //helps wake up Heroku server
+      fetch(`${Const.ENDPOINT}`)
+    }
+  }
 
 
   render() {

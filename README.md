@@ -1,69 +1,71 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Helping Hand
+[HelpingHand](https://helpinghand-app.herokuapp.com) Live Demo - Coming Soon!
 
-## Available Scripts
+HelpingHand is full-stacked web application for bringing volunteers and philanthropists together to support their communities with their resources. It allows users to plan events to solve problems they see in their community (e.g. the Boardwalk at Coney Island could use some help cleaning up prior to the beach opening). It allows sponsors to fund these events to entice individuals to come volunteer and also ensures that the event is successful. The volunteers do not earn the money for themselves, but they are able earn a credit to donate to a cause of their choice. For both volunteer and sponsor, a single action, whether it is volunteering or sponsoring, will leads to multiple benefits. A volunteer can help their community and donate to a charity that may only accept monetary aid. A Sponsor can ensures that the community event that need human resources can be successful as well as see all of the charities where their contributions ultimately end up. The app it built on the React.JS library with React Router, Leaflet, Redux architectural framework and styled with React Bootstrap.
 
-In the project directory, you can run:
 
-### `npm start`
+## Contents
 
-Runs the app in the development mode.<br>
+- [Getting Started](#getting-started)
+- [Structure](#structure)
+- [Containers and Components](#containers-and-components)
+  - [Homepage](#homepage)
+  - [Users](#user)
+  - [Volunteer's Events](#volunteers-events)
+  - [Sponsor's Donations](#sponsors-donations)
+  - [Signup & Login](#signup&login)
+- [Future Development](#future-development)
+
+## Getting Started
+To install all of the apps dependencies, use: `npm install`. The API github repo can be found at https://github.com/Tonyjlum/mod5api. The default API link is to a live database on Heroku, but can be changed in ENDPOINT variable in src/const.js .
+
+In the project directory, you can run: `npm start`.
 Open [http://${window.location.hostname}:3000](http://${window.location.hostname}:3000) to view it in the browser.
+The page will reload if you make edits. You will also see any lint errors in the console.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Structure
+The top-level folder includes the public folder, which contains the index.html wher ethe app is officially rendered by React, an src folder which holds the most of the react components, App.js, const.js, index.js and a few other files.
+- app.js handles the routes and which component will render at those routes.
+- const.js handles the constant variables that are reused throughout the app.
+- index.js contains the Redux reducers and
 
-### `npm test`
+## Containers and Components
+The app has a few major sections (primary components and containers are listed):
+#### Homepage
+The **homepage** details the purpose of the app as well as allow visitors to login with a guest account for both volunteer and sponsor.
+- homepage.js and homepagebottom.js
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![homepageimg](./assets/images/homepageimg.png)
 
-### `npm run build`
+#### User
+The **user** page is the primary interaction that volunteers and sponsors will be using. It contains the the leaflet map, creating a new event, sponsoring events, and view all upcoming events. This container will function dynamically based on which type of account is signed in.
+- donationmodal.js, event.js, map.js, newevent.js, event_container.js, and user_container.js
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![homepageimg](./assets/images/userimg.png)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+![homepageimg](./assets/images/sponsorimg.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Volunteer's Events
+The **events** page for volunteers show all of their events as well as handle the confirmations of their past events where they were the coordinator.
+  - confirmvolunteers.js and  myeventcontainer.js
 
-### `npm run eject`
+![homepageimg](./assets/images/events.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![homepageimg](./assets/images/confirmvolunteer02.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Sponsor's Donations
+The **donations** page for sponsors show all of their contributions to the events they are supporting.
+  - donationscontainer.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![homepageimg](./assets/images/contributions.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Signup & Login
+The **login** and **new account** pages allows users to login to their account or create a new account. The login page has a account type selector through radio buttons.
+ - loginform.js and newaccountform.js
 
-## Learn More
+![homepageimg](./assets/images/loginimg.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![homepageimg](./assets/images/newaccountimg.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# mod5frontend
+## Future Development
