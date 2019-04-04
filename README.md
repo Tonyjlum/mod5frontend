@@ -24,7 +24,7 @@ Open [http://${window.location.hostname}:3000](http://${window.location.hostname
 The page will reload if you make edits. You will also see any lint errors in the console.
 
 ## Structure
-The top-level folder includes the public folder, which contains the index.html wher ethe app is officially rendered by React, an src folder which holds the most of the react components, App.js, const.js, index.js and a few other files.
+The top-level folder includes the public folder, which contains the index.html where the app is officially rendered by React, an src folder which holds the most of the react components, App.js, const.js, index.js and a few other files.
 - app.js handles the routes and which component will render at those routes.
 - const.js handles the constant variables that are reused throughout the app.
 - index.js contains the Redux reducers and
@@ -63,9 +63,27 @@ The **donations** page for sponsors show all of their contributions to the event
 The **login** and **new account** pages allows users to login to their account or create a new account. The login page has a account type selector through radio buttons.
  - loginform.js and newaccountform.js
 
-![homepageimg](./assets/images/loginimg.png)
+<!-- ![homepageimg](./assets/images/loginimg.png)
 
-![homepageimg](./assets/images/newaccountimg.png)
+![homepageimg](./assets/images/newaccountimg.png) -->
+
+<img src="./assets/images/loginimg.png" alt="login" width="500px"/>
+
+<img src="./assets/images/newaccountimg.png" alt="new-account" width="500px"/>
 
 
 ## Future Development
+At the moment, events have full CRUD functionality and users have basic account management. There are a few additions and edits I would like to see in the app:
+  - Mass email system to let volunteers and sponsors know about any updates to the event.
+  - Volunteers:
+    - adding the ability to donate the amount they have earned to a charity of their choice
+    - search and filter out upcoming events and the events they are attending
+    - watch an event and receive an alert if they become sponsored.
+  - Sponsors
+    - see a list of locations and how much of a contribution they have made to a particular charity.
+    - print out a statement to use as 1099 tax deduction.
+
+## Contact
+Feel free to each out for any reason
+  - Tonyjlum@gmail.com
+  - [Linkeden](https://www.linkedin.com/in/tony-lum/)
