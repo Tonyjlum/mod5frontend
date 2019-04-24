@@ -8,6 +8,7 @@ import NewUserContainer from './container/newusercontainer.js'
 import LoginForm from './components/loginform.js'
 import MyEventContainer from './container/myeventcontainer.js'
 import DonationContainer from './container/donationscontainer.js'
+import VolunteerDonations from './container/volunteerdonations.js'
 import About from "./components/about.js"
 import { connect } from 'react-redux'
 import * as Const from './const.js'
@@ -45,6 +46,10 @@ class App extends Component {
   renderMyDonationContainer = () => {
     return <DonationContainer />
   }
+  renderDonationsPage = () => {
+    //conditionally load depending on user type
+    return <VolunteerDonations />
+  }
 
   renderAbout = () => {
     return <About />
@@ -81,6 +86,7 @@ class App extends Component {
           <Route exact path ="/login" component={this.renderLoginForm} />
           <Route exact path = "/attending" component={this.renderMyEventContainer} />
           <Route exact path = "/contribution" component={this.renderMyDonationContainer} />
+          <Route exact path = "/donation" component={this.renderDonationsPage} />
           <Route exact path = "/about" component={this.renderAbout} />
         </>
       </Router>

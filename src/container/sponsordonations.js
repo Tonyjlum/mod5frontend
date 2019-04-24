@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-class VolunteerDonations extends Component {
+class SponsorDonations extends Component {
 
   render() {
     return (
       <div>
-        Donation Page
+        Sponsor Donations
       </div>
     );
   }
 
 }
 
-export default VolunteerDonations;
+export default SponsorDonations;
