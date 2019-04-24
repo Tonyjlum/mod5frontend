@@ -37,10 +37,18 @@ The homepage details the purpose of the app as well as allow visitors to login w
 ![homepageimg](./assets/images/homepageimg.png)
 
 #### User
-The user page is the primary interaction that volunteers and sponsors will be using. It contains the the leaflet map, creating a new event, sponsoring events, and view all upcoming events. This container will function dynamically based on which type of account is signed in. If location tracking is allowed, the map will center on the users locations. Other wise it will center to downtown Manhattan. When a event is clicked, the map will center over the event. Events will have a blue ring if they have been sponsored and a red ring if it has yet to be sponsored.
+The user page is the primary interaction that volunteers and sponsors will be using. It contains the the leaflet map, creating a new event, sponsoring events, and view all upcoming events. This container will function dynamically based on which type of account is signed in. If location tracking is allowed, the map will center on the users locations. Other wise it will center to downtown Manhattan.
+```
+changeLocation = (event) => {
+  const position = {latitude: event.lat, longitude: event.long}
+  this.props.addLocationToStore(position)
+}
+```
+When a event is clicked, the map will center over the event. Events will have a blue ring if they have been sponsored and a red ring if it has yet to be sponsored.
 - donationmodal.js, event.js, map.js, newevent.js, event_container.js, and user_container.js
 
 ![homepageimg](./assets/images/userimg.png)
+
 
 ![homepageimg](./assets/images/sponsorimg.png)
 

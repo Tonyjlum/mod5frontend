@@ -21,18 +21,16 @@ const reducer = (state = Const.DEFAULTSTATE, action) => {
     case "ADD_LOGIN_ACCOUNT_TO_STORE":
       return {...state, currentUser: action.payload }
     case "UPDATE_CONFIRMS":
-      return { ...state, currentUser: { ...state.currentUser, confirm_event_info: action.payload}
-      }
+      return { ...state, currentUser: { ...state.currentUser, confirm_event_info: action.payload} }
     case "ADD_CONFIRMS":
-      return { ...state, currentUser: { ...state.currentUser, confirm_event_info: [...state.currentUser.confirm_event_info, action.payload]}
-      }
+      return { ...state, currentUser: { ...state.currentUser, confirm_event_info: [...state.currentUser.confirm_event_info, action.payload]} }
     case "ADD_DONATIONS_TO_USER":
     return {...state, currentUser:{...state.currentUser, donations: [...state.currentUser.donations, action.payload]} }
     case "REMOVE_CURRENT_USER":
       return {...state, currentUser: action.payload, sponsor: false}
     case "LOGGED_IN_AS_SPONSOR":
       return {...state, sponsor: true}
-      case "ADD_DONATIONS_TO_EVENT":
+    case "ADD_DONATIONS_TO_EVENT":
       return {...state, events: action.payload}
     default:
       return state

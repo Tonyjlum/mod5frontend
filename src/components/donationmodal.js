@@ -29,7 +29,7 @@ class DonationModal extends Component {
     })
     .then(response => response.json())
     .then( json => {
-      this.props.addToDonations(json  )
+      this.props.addToDonations(json)
       const updatedEvents = this.updateEvents(this.updateEventDonations(json))
       this.props.UpdateEvents(updatedEvents)
     })
