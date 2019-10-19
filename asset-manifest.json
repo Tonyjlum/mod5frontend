@@ -1,15 +1,15 @@
 {
-  "main.css": "/Helping-Hand-App/public/index.html/static/css/main.466a0bce.chunk.css",
-  "main.js": "/Helping-Hand-App/public/index.html/static/js/main.db7b3628.chunk.js",
-  "main.js.map": "/Helping-Hand-App/public/index.html/static/js/main.db7b3628.chunk.js.map",
-  "runtime~main.js": "/Helping-Hand-App/public/index.html/static/js/runtime~main.7114560c.js",
-  "runtime~main.js.map": "/Helping-Hand-App/public/index.html/static/js/runtime~main.7114560c.js.map",
-  "static/css/2.5ce357e6.chunk.css": "/Helping-Hand-App/public/index.html/static/css/2.5ce357e6.chunk.css",
-  "static/js/2.c4bdce8b.chunk.js": "/Helping-Hand-App/public/index.html/static/js/2.c4bdce8b.chunk.js",
-  "static/js/2.c4bdce8b.chunk.js.map": "/Helping-Hand-App/public/index.html/static/js/2.c4bdce8b.chunk.js.map",
-  "index.html": "/Helping-Hand-App/public/index.html/index.html",
-  "precache-manifest.f205525276d1a09e02fcd12a44cbc947.js": "/Helping-Hand-App/public/index.html/precache-manifest.f205525276d1a09e02fcd12a44cbc947.js",
-  "service-worker.js": "/Helping-Hand-App/public/index.html/service-worker.js",
-  "static/css/2.5ce357e6.chunk.css.map": "/Helping-Hand-App/public/index.html/static/css/2.5ce357e6.chunk.css.map",
-  "static/css/main.466a0bce.chunk.css.map": "/Helping-Hand-App/public/index.html/static/css/main.466a0bce.chunk.css.map"
+  "main.css": "/Helping-Hand-App/index.html/static/css/main.466a0bce.chunk.css",
+  "main.js": "/Helping-Hand-App/index.html/static/js/main.aebe4392.chunk.js",
+  "main.js.map": "/Helping-Hand-App/index.html/static/js/main.aebe4392.chunk.js.map",
+  "runtime~main.js": "/Helping-Hand-App/index.html/static/js/runtime~main.00930239.js",
+  "runtime~main.js.map": "/Helping-Hand-App/index.html/static/js/runtime~main.00930239.js.map",
+  "static/css/2.5ce357e6.chunk.css": "/Helping-Hand-App/index.html/static/css/2.5ce357e6.chunk.css",
+  "static/js/2.c4bdce8b.chunk.js": "/Helping-Hand-App/index.html/static/js/2.c4bdce8b.chunk.js",
+  "static/js/2.c4bdce8b.chunk.js.map": "/Helping-Hand-App/index.html/static/js/2.c4bdce8b.chunk.js.map",
+  "index.html": "/Helping-Hand-App/index.html/index.html",
+  "precache-manifest.16102e09943848ddd3863e4ac996f9e3.js": "/Helping-Hand-App/index.html/precache-manifest.16102e09943848ddd3863e4ac996f9e3.js",
+  "service-worker.js": "/Helping-Hand-App/index.html/service-worker.js",
+  "static/css/2.5ce357e6.chunk.css.map": "/Helping-Hand-App/index.html/static/css/2.5ce357e6.chunk.css.map",
+  "static/css/main.466a0bce.chunk.css.map": "/Helping-Hand-App/index.html/static/css/main.466a0bce.chunk.css.map"
 }

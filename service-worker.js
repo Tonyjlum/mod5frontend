@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Helping-Hand-App/public/index.html/precache-manifest.f205525276d1a09e02fcd12a44cbc947.js"
+  "/Helping-Hand-App/index.html/precache-manifest.16102e09943848ddd3863e4ac996f9e3.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/Helping-Hand-App/public/index.html/index.html", {
+workbox.routing.registerNavigationRoute("/Helping-Hand-App/index.html/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
