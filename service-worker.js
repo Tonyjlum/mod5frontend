@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Tonyjlum/GitPagesDeployHelpingHand.git/precache-manifest.b48f72e208b95d864bfa1713da139ad9.js"
+  "/Helping-Hand-App/index.html/precache-manifest.16102e09943848ddd3863e4ac996f9e3.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/Tonyjlum/GitPagesDeployHelpingHand.git/index.html", {
+workbox.routing.registerNavigationRoute("/Helping-Hand-App/index.html/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
