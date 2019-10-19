@@ -97,3 +97,4 @@ At the moment, events have full CRUD functionality and users have basic account 
 Feel free to reach out for any reason
   - Tonyjlum@gmail.com
   - [Linkedin](https://www.linkedin.com/in/tony-lum/)
+# HelpingHand-app
