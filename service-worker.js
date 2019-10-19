@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Helping-Hand-App/precache-manifest.95ddc3e11278be3e8e914a18fed390b3.js"
+  "/Helping-Hand-App/precache-manifest.f55fea7617d757c5e0083e7afa20977d.js"
 );
 
 workbox.clientsClaim();
